@@ -386,7 +386,7 @@
         "additionalProperties" : false
       },
       "task" : {
-        "required" : [ "effort", "title", "workItemId" ],
+        "required" : [ "workItemId" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -396,7 +396,7 @@
           },
           "title" : {
             "type" : "string",
-            "nullable" : false
+            "nullable" : true
           },
           "workItemId" : {
             "type" : "integer",
@@ -406,7 +406,7 @@
           "effort" : {
             "type" : "number",
             "format" : "decimal",
-            "nullable" : false
+            "nullable" : true
           }
         },
         "additionalProperties" : false
