@@ -500,7 +500,7 @@
         "additionalProperties" : false
       },
       "projectReport" : {
-        "required" : [ "id", "itemBacklogTypes", "n", "t" ],
+        "required" : [ "id", "n", "t", "types" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -518,7 +518,7 @@
             "format" : "decimal",
             "nullable" : false
           },
-          "itemBacklogTypes" : {
+          "types" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/workItemType"
