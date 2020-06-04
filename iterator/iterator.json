@@ -408,6 +408,11 @@
             "developerName" : {
               "type" : "string",
               "nullable" : true
+            },
+            "closedOn" : {
+              "type" : "string",
+              "format" : "DateTime",
+              "nullable" : true
             }
           },
           "additionalProperties" : false
