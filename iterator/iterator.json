@@ -386,7 +386,7 @@
         "additionalProperties" : false
       },
       "task" : {
-        "required" : [ "developerId", "effort", "title", "workItemId" ],
+        "required" : [ "effort", "title", "workItemId" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -399,11 +399,6 @@
             "nullable" : false
           },
           "workItemId" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : false
-          },
-          "developerId" : {
             "type" : "integer",
             "format" : "int32",
             "nullable" : false
@@ -422,12 +417,6 @@
         "properties" : {
           "id" : {
             "type" : "integer",
-            "format" : "int32",
-            "nullable" : true
-          },
-          "wiId" : {
-            "type" : "integer",
-            "description" : "parent workItem id",
             "format" : "int32",
             "nullable" : true
           },
