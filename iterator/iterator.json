@@ -297,7 +297,7 @@
           "type" : "object",
           "properties" : {
             "data" : {
-              "$ref" : "#/components/schemas/task"
+              "$ref" : "#/components/schemas/taskDetail"
             }
           },
           "additionalProperties" : false
@@ -385,6 +385,20 @@
         },
         "additionalProperties" : false
       },
+      "taskDetail" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/task"
+        }, {
+          "required" : [ "developerName", "projectId", "projectName", "workItemId", "workItemTitle" ],
+          "type" : "object",
+          "properties" : {
+            "data" : {
+              "$ref" : "#/components/schemas/task"
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      },
       "task" : {
         "required" : [ "workItemId" ],
         "type" : "object",
@@ -395,6 +409,10 @@
             "nullable" : true
           },
           "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "description" : {
             "type" : "string",
             "nullable" : true
           },
