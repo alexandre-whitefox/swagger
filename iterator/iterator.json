@@ -389,11 +389,25 @@
         "allOf" : [ {
           "$ref" : "#/components/schemas/task"
         }, {
-          "required" : [ "developerName", "projectId", "projectName", "workItemId", "workItemTitle" ],
+          "required" : [ "projectId", "projectName", "workItemTitle" ],
           "type" : "object",
           "properties" : {
-            "data" : {
-              "$ref" : "#/components/schemas/task"
+            "projectName" : {
+              "type" : "string",
+              "nullable" : false
+            },
+            "projectId" : {
+              "type" : "integer",
+              "format" : "int32",
+              "nullable" : false
+            },
+            "workItemTitle" : {
+              "type" : "string",
+              "nullable" : false
+            },
+            "developerName" : {
+              "type" : "string",
+              "nullable" : true
             }
           },
           "additionalProperties" : false
