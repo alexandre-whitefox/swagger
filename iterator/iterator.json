@@ -386,6 +386,32 @@
         "additionalProperties" : false
       },
       "task" : {
+        "required" : [ "developerId", "effort", "title", "workItemId" ],
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "workItemId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "developerId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "effort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "taskItem" : {
         "required" : [ "e", "n" ],
         "type" : "object",
         "properties" : {
@@ -731,7 +757,7 @@
           "tasks" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/task"
+              "$ref" : "#/components/schemas/taskItem"
             }
           }
         },
