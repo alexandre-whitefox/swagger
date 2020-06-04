@@ -389,6 +389,11 @@
         "required" : [ "developerId", "effort", "title", "workItemId" ],
         "type" : "object",
         "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
           "title" : {
             "type" : "string",
             "nullable" : false
