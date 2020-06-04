@@ -738,7 +738,7 @@
         "additionalProperties" : false
       },
       "workItem" : {
-        "required" : [ "ae", "bc", "d", "ee", "l", "n" ],
+        "required" : [ "ae", "ee", "n" ],
         "type" : "object",
         "properties" : {
           "n" : {
@@ -750,11 +750,6 @@
             "type" : "integer",
             "description" : "item backlog id",
             "nullable" : true
-          },
-          "bc" : {
-            "type" : "string",
-            "description" : "billing center name",
-            "nullable" : false
           },
           "ee" : {
             "type" : "number",
@@ -768,21 +763,9 @@
             "format" : "decimal",
             "nullable" : false
           },
-          "u" : {
-            "type" : "string",
-            "description" : "last update",
-            "format" : "datetime",
-            "nullable" : false
-          },
           "c" : {
             "type" : "boolean",
             "description" : "workitem closed",
-            "nullable" : true
-          },
-          "l" : {
-            "type" : "string",
-            "description" : "last activity",
-            "format" : "datetime",
             "nullable" : true
           },
           "tasks" : {
