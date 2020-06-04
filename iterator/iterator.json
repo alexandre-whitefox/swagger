@@ -1,0 +1,830 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "White Fox Iterator API",
+    "description" : "API para controle de tarefas e projetos ágeis",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://whitefoxiteratorservice.azurewebsites.net",
+    "description" : "White Fox API"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/task/close" : {
+      "post" : {
+        "summary" : "closes new task",
+        "operationId" : "closetask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/task"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/task" : {
+      "get" : {
+        "summary" : "get data about a task",
+        "operationId" : "gettask",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "taskId",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "task detail",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/taskResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "saves a new task",
+        "operationId" : "savetask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/task"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "delete a task",
+        "operationId" : "deletetask",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "taskId",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "updates a task",
+        "operationId" : "updatetask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/task"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard" : {
+      "get" : {
+        "summary" : "get the current user dashboard",
+        "operationId" : "dashboard",
+        "responses" : {
+          "200" : {
+            "description" : "dashboard for tasks",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/dashboard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/billingCycle/Burndown" : {
+      "post" : {
+        "summary" : "get the burndown para billing cycles",
+        "operationId" : "burndownBC",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idOnly"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "burndown",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/billingCycleBurndown"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/billingCycle/Report" : {
+      "post" : {
+        "summary" : "get the billing cycle report",
+        "operationId" : "reportBC",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idOnly"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "report",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/billingCycleReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/profile/billingCenters" : {
+      "post" : {
+        "summary" : "get the current user billing centers and cycles",
+        "operationId" : "billingCenters",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/billingCenterOptions"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "list of billing centers/cycles",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "additionalProperties" : false,
+                  "items" : {
+                    "$ref" : "#/components/schemas/billingCenter"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "actionResult" : {
+        "required" : [ "success" ],
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean",
+            "nullable" : false
+          },
+          "id" : {
+            "type" : "integer",
+            "description" : "affected id",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "message" : {
+            "type" : "string"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCenterOptions" : {
+        "required" : [ "backlogOnly", "billingOnly" ],
+        "type" : "object",
+        "properties" : {
+          "billingOnly" : {
+            "type" : "boolean",
+            "nullable" : false
+          },
+          "backlogOnly" : {
+            "type" : "boolean",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "taskResult" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/actionResult"
+        }, {
+          "required" : [ "data" ],
+          "type" : "object",
+          "properties" : {
+            "data" : {
+              "$ref" : "#/components/schemas/task"
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      },
+      "burndownItem" : {
+        "required" : [ "a", "d", "p" ],
+        "type" : "object",
+        "properties" : {
+          "d" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "p" : {
+            "type" : "number",
+            "description" : "planned burndown",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "a" : {
+            "type" : "number",
+            "description" : "actual burndown",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "userVolume" : {
+        "required" : [ "id", "v" ],
+        "type" : "object",
+        "properties" : {
+          "v" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "perDayItem" : {
+        "required" : [ "d", "users" ],
+        "type" : "object",
+        "properties" : {
+          "d" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/userVolume"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCycleBurndown" : {
+        "required" : [ "burndown", "perDay", "users" ],
+        "type" : "object",
+        "properties" : {
+          "burndown" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/burndownItem"
+            }
+          },
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/idN"
+            }
+          },
+          "perDay" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/perDayItem"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "task" : {
+        "required" : [ "e", "n" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "wiId" : {
+            "type" : "integer",
+            "description" : "parent workItem id",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "n" : {
+            "type" : "string",
+            "description" : "task title",
+            "nullable" : false
+          },
+          "e" : {
+            "type" : "number",
+            "description" : "effort realized",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "string",
+            "format" : "datetime",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "workItemType" : {
+        "required" : [ "items", "n", "t" ],
+        "type" : "object",
+        "properties" : {
+          "n" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "t" : {
+            "type" : "number",
+            "description" : "total effort in type",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/workItem"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "projectReport" : {
+        "required" : [ "id", "itemBacklogTypes", "n", "t" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "number",
+            "format" : "in32",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "t" : {
+            "type" : "number",
+            "description" : "total effort in cycle",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "itemBacklogTypes" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/workItemType"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCycleReport" : {
+        "required" : [ "projects", "total" ],
+        "type" : "object",
+        "properties" : {
+          "projects" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/projectReport"
+            }
+          },
+          "total" : {
+            "type" : "number",
+            "description" : "total effort in cycle",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "idN" : {
+        "required" : [ "id", "n" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "idOnly" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCenter" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/idN"
+        }, {
+          "required" : [ "cycles" ],
+          "type" : "object",
+          "properties" : {
+            "cycles" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/components/schemas/idN"
+              }
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      },
+      "day" : {
+        "required" : [ "c", "i", "n" ],
+        "type" : "object",
+        "properties" : {
+          "n" : {
+            "type" : "string",
+            "description" : "day name",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "number",
+            "description" : "effort completed",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "i" : {
+            "type" : "string",
+            "description" : "week day, 0-based",
+            "nullable" : false,
+            "enum" : [ "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" ]
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCenterDeveloper" : {
+        "required" : [ "a", "ad", "c", "g", "id", "ma", "me", "n" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "billing center id",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "description" : "billing center name",
+            "nullable" : false
+          },
+          "g" : {
+            "type" : "number",
+            "description" : "effort remaining",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "number",
+            "description" : "effort completed",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "a" : {
+            "type" : "number",
+            "description" : "delayed effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ad" : {
+            "type" : "number",
+            "description" : "delayed effort in the day. If negative, indicates work ahead",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ma" : {
+            "type" : "number",
+            "description" : "average effort per day, adjusted",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "me" : {
+            "type" : "number",
+            "description" : "initial average effort per day",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "days" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/day"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "developer" : {
+        "required" : [ "a", "ad", "c", "g", "id", "ma", "me", "n" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "user id",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "description" : "user name",
+            "nullable" : false
+          },
+          "g" : {
+            "type" : "number",
+            "description" : "effort remaining",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ma" : {
+            "type" : "number",
+            "description" : "average effort per day, adjusted",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "me" : {
+            "type" : "number",
+            "description" : "initial average effort per day",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "number",
+            "description" : "effort completed",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "a" : {
+            "type" : "number",
+            "description" : "delayed effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ad" : {
+            "type" : "number",
+            "description" : "delayed effort in the day. If negative, indicates work ahead.",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "billingCenters" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/billingCenterDeveloper"
+            }
+          },
+          "days" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/day"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "workItem" : {
+        "required" : [ "ae", "bc", "d", "ee", "l", "n" ],
+        "type" : "object",
+        "properties" : {
+          "n" : {
+            "type" : "string",
+            "description" : "item backlog name",
+            "nullable" : false
+          },
+          "id" : {
+            "type" : "integer",
+            "description" : "item backlog id",
+            "nullable" : true
+          },
+          "bc" : {
+            "type" : "string",
+            "description" : "billing center name",
+            "nullable" : false
+          },
+          "ee" : {
+            "type" : "number",
+            "description" : "estimated effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ae" : {
+            "type" : "number",
+            "description" : "actual effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "u" : {
+            "type" : "string",
+            "description" : "last update",
+            "format" : "datetime",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "boolean",
+            "description" : "workitem closed",
+            "nullable" : true
+          },
+          "l" : {
+            "type" : "string",
+            "description" : "last activity",
+            "format" : "datetime",
+            "nullable" : true
+          },
+          "tasks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/task"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "billingCenterDashboard" : {
+        "required" : [ "a", "ad", "d", "g", "id", "n", "nl" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "description" : "billing center id",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "description" : "billing center name",
+            "nullable" : false
+          },
+          "g" : {
+            "type" : "number",
+            "description" : "estimated effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "d" : {
+            "type" : "number",
+            "description" : "effort completed",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "a" : {
+            "type" : "number",
+            "description" : "delayed effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "nl" : {
+            "type" : "number",
+            "description" : "unallocated effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "ad" : {
+            "type" : "number",
+            "description" : "delayed effort in the day. If negativa, indicates work ahead",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "dashboard" : {
+        "required" : [ "billingCenters", "developers", "iteration", "lastItems", "userId" ],
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "description" : "current user id",
+            "nullable" : false
+          },
+          "billingCenters" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/billingCenterDashboard"
+            }
+          },
+          "lastItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/workItem"
+            }
+          },
+          "iteration" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "developers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/developer"
+            }
+          }
+        },
+        "additionalProperties" : false
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer"
+      }
+    }
+  },
+  "x-azure-api-id" : "white-fox-iterator-api"
+}
