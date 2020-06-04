@@ -411,7 +411,7 @@
             },
             "closedOn" : {
               "type" : "string",
-              "format" : "DateTime",
+              "format" : "date-time",
               "nullable" : true
             }
           },
