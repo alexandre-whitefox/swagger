@@ -23,7 +23,19 @@
           }
         }
       }
+    },
+    "/management/dashboards" : {
+      "post" : {
+        "summary" : "updates dashboard",
+        "operationId" : "dashboards",
+        "responses" : {
+          "200" : {
+            "description" : "Ok"
+          }
+        }
+      }
     }
   },
-  "components" : { }
+  "components" : { },
+  "x-azure-api-id" : "whitefox"
 }
