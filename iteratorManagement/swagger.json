@@ -24,7 +24,7 @@
         }
       }
     },
-    "/management/dashboards" : {
+    "/management/updatedashboards" : {
       "post" : {
         "summary" : "updates dashboard",
         "operationId" : "dashboards",
