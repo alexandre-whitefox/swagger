@@ -1,0 +1,29 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "White Fox Iterator Management Api",
+    "description" : "Apis for management activities",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/WhiteFoxSoftware/IteratorManagement/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
+    "url" : "http://whitefoxiteratorservice.azurewebsites.net",
+    "description" : "White Fox API"
+  } ],
+  "paths" : {
+    "/management/keepAlive" : {
+      "get" : {
+        "summary" : "generates a database access to prevent system from pausing",
+        "operationId" : "keepAlive",
+        "responses" : {
+          "200" : {
+            "description" : "Ok"
+          }
+        }
+      }
+    }
+  },
+  "components" : { }
+}
