@@ -6,9 +6,6 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/WhiteFoxSoftware/IteratorManagement/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
-  }, {
     "url" : "http://whitefoxiteratorservice.azurewebsites.net",
     "description" : "White Fox API"
   } ],
