@@ -746,6 +746,11 @@
             "description" : "item backlog name",
             "nullable" : false
           },
+          "bc" : {
+            "type" : "string",
+            "description" : "billing center name",
+            "nullable" : true
+          },
           "id" : {
             "type" : "integer",
             "description" : "item backlog id",
