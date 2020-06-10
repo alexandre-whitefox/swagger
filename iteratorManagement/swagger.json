@@ -6,11 +6,11 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://whitefoxiteratorservice.azurewebsites.net",
+    "url" : "http://whitefoxiteratorservice.azurewebsites.net/management",
     "description" : "White Fox API"
   } ],
   "paths" : {
-    "/management/keepAlive" : {
+    "/keepAlive" : {
       "get" : {
         "summary" : "generates a database access to prevent system from pausing",
         "operationId" : "keepAlive",
@@ -21,7 +21,7 @@
         }
       }
     },
-    "/management/updatedashboards" : {
+    "/updatedashboards" : {
       "post" : {
         "summary" : "updates dashboard",
         "operationId" : "dashboards",
@@ -34,5 +34,5 @@
     }
   },
   "components" : { },
-  "x-azure-api-id" : "whitefox"
+  "x-azure-api-id" : "white-fox-iterator-management-api"
 }
