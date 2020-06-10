@@ -830,12 +830,17 @@
         "additionalProperties" : false
       },
       "dashboard" : {
-        "required" : [ "billingCenters", "developers", "iteration", "lastItems", "userId" ],
+        "required" : [ "billingCenters", "developers", "iteration", "lastItems", "lastUpdate", "userId" ],
         "type" : "object",
         "properties" : {
           "userId" : {
             "type" : "integer",
             "description" : "current user id",
+            "nullable" : false
+          },
+          "lastUpdate" : {
+            "type" : "string",
+            "format" : "date-time",
             "nullable" : false
           },
           "billingCenters" : {
