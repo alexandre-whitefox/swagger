@@ -1,0 +1,163 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "White Fox Async Operations API",
+    "description" : "API for asynchronous operations management",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://whitefoxasyncservice.azurewebsites.net",
+    "description" : "White Fox API"
+  } ],
+  "security" : [ {
+    "bearerAuth" : [ ]
+  } ],
+  "paths" : {
+    "/operation" : {
+      "get" : {
+        "summary" : "get the status of a request",
+        "operationId" : "operationStatus",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "operationId",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "operation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/operationStatus"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "creates a new operation",
+        "operationId" : "createOperation",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/operationParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "operation result"
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "update the status of a operation",
+        "operationId" : "updateOperation",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/operationParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "operation result"
+          }
+        }
+      }
+    },
+    "/history" : {
+      "get" : {
+        "summary" : "get last 50 operations",
+        "operationId" : "operationHistory",
+        "responses" : {
+          "200" : {
+            "description" : "operation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/operationStatus"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "operationParameters" : {
+        "required" : [ "id", "status" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "Started", "Working", "FinishedSuccess", "FinishedError" ]
+          }
+        }
+      },
+      "operationStatus" : {
+        "required" : [ "started", "status" ],
+        "type" : "object",
+        "properties" : {
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "started" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : false
+          },
+          "finished" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "message" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "status" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "Started", "Working", "FinishedSuccess", "FinishedError" ]
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "bearerAuth" : {
+        "type" : "http",
+        "scheme" : "bearer"
+      }
+    }
+  }
+}
