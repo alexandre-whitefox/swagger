@@ -19,11 +19,11 @@
         "operationId" : "operationStatus",
         "parameters" : [ {
           "name" : "id",
-          "in" : "path",
+          "in" : "query",
           "description" : "operationId",
           "required" : true,
-          "style" : "simple",
-          "explode" : false,
+          "style" : "form",
+          "explode" : true,
           "schema" : {
             "type" : "string",
             "format" : "uuid"
@@ -145,6 +145,11 @@
             "type" : "string",
             "nullable" : true
           },
+          "resultingId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
           "status" : {
             "type" : "string",
             "nullable" : false,
@@ -159,5 +164,6 @@
         "scheme" : "bearer"
       }
     }
-  }
+  },
+  "x-azure-api-id" : "whitefox-async-operations-api"
 }
