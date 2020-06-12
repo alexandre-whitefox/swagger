@@ -49,7 +49,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/operationParameters"
+                "$ref" : "#/components/schemas/operation"
               }
             }
           }
@@ -67,7 +67,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/operationParameters"
+                "$ref" : "#/components/schemas/operation"
               }
             }
           }
@@ -103,8 +103,8 @@
   },
   "components" : {
     "schemas" : {
-      "operationParameters" : {
-        "required" : [ "id", "status" ],
+      "operation" : {
+        "required" : [ "id" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -114,31 +114,6 @@
           },
           "description" : {
             "type" : "string",
-            "nullable" : true
-          },
-          "status" : {
-            "type" : "string",
-            "nullable" : false,
-            "enum" : [ "Started", "Working", "FinishedSuccess", "FinishedError" ]
-          }
-        }
-      },
-      "operationStatus" : {
-        "required" : [ "started", "status" ],
-        "type" : "object",
-        "properties" : {
-          "description" : {
-            "type" : "string",
-            "nullable" : true
-          },
-          "started" : {
-            "type" : "string",
-            "format" : "date-time",
-            "nullable" : false
-          },
-          "finished" : {
-            "type" : "string",
-            "format" : "date-time",
             "nullable" : true
           },
           "message" : {
@@ -156,6 +131,25 @@
             "enum" : [ "Started", "Working", "FinishedSuccess", "FinishedError" ]
           }
         }
+      },
+      "operationStatus" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/operation"
+        }, {
+          "type" : "object",
+          "properties" : {
+            "started" : {
+              "type" : "string",
+              "format" : "date-time",
+              "nullable" : false
+            },
+            "finished" : {
+              "type" : "string",
+              "format" : "date-time",
+              "nullable" : true
+            }
+          }
+        } ]
       }
     },
     "securitySchemes" : {
