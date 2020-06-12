@@ -13,7 +13,7 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
-    "/task/close" : {
+    "/operations/task/close" : {
       "post" : {
         "summary" : "closes new task",
         "operationId" : "closetask",
@@ -40,7 +40,7 @@
         }
       }
     },
-    "/task" : {
+    "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
         "operationId" : "gettask",
@@ -255,12 +255,34 @@
   "components" : {
     "schemas" : {
       "actionResult" : {
-        "required" : [ "success" ],
+        "required" : [ "async", "date", "success" ],
         "type" : "object",
         "properties" : {
+          "date" : {
+            "type" : "string",
+            "description" : "date and time of the operation",
+            "format" : "date-time",
+            "nullable" : false
+          },
+          "operationId" : {
+            "type" : "string",
+            "description" : "if it is an async operation, returns the operationId",
+            "format" : "uuid",
+            "nullable" : true
+          },
+          "async" : {
+            "type" : "boolean",
+            "description" : "indictes if the action is asynchronous",
+            "nullable" : false
+          },
           "success" : {
             "type" : "boolean",
             "nullable" : false
+          },
+          "data" : {
+            "type" : "object",
+            "description" : "aditional data, if applicable",
+            "nullable" : true
           },
           "id" : {
             "type" : "integer",
