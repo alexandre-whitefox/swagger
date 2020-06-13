@@ -6,14 +6,14 @@
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://whitefoxasyncservice.azurewebsites.net",
+    "url" : "http://whitefoxasyncservice.azurewebsites.net/asyncoperations",
     "description" : "White Fox API"
   } ],
   "security" : [ {
     "bearerAuth" : [ ]
   } ],
   "paths" : {
-    "/operation" : {
+    "/asyncoperations" : {
       "get" : {
         "summary" : "get the status of a request",
         "operationId" : "operationStatus",
