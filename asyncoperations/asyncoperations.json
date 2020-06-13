@@ -13,7 +13,7 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
-    "/asyncoperations" : {
+    "/" : {
       "get" : {
         "summary" : "get the status of a request",
         "operationId" : "operationStatus",
