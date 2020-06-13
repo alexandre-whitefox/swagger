@@ -21,7 +21,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/task"
+                "$ref" : "#/components/schemas/closeTaskParameters"
               }
             }
           }
@@ -76,7 +76,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/task"
+                "$ref" : "#/components/schemas/taskParameters"
               }
             }
           }
@@ -129,7 +129,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/task"
+                "$ref" : "#/components/schemas/taskParameters"
               }
             }
           }
@@ -254,6 +254,22 @@
   },
   "components" : {
     "schemas" : {
+      "closeTaskParameters" : {
+        "required" : [ "id" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "effort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          }
+        }
+      },
       "actionResult" : {
         "required" : [ "async", "date", "success" ],
         "type" : "object",
@@ -409,40 +425,59 @@
         "additionalProperties" : false
       },
       "taskDetail" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/task"
-        }, {
-          "required" : [ "projectId", "projectName", "workItemTitle" ],
-          "type" : "object",
-          "properties" : {
-            "projectName" : {
-              "type" : "string",
-              "nullable" : false
-            },
-            "projectId" : {
-              "type" : "integer",
-              "format" : "int32",
-              "nullable" : false
-            },
-            "workItemTitle" : {
-              "type" : "string",
-              "nullable" : false
-            },
-            "developerName" : {
-              "type" : "string",
-              "nullable" : true
-            },
-            "closedOn" : {
-              "type" : "string",
-              "format" : "date-time",
-              "nullable" : true
-            }
+        "required" : [ "id", "projectId", "projectName", "title", "workItemTitle" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
           },
-          "additionalProperties" : false
-        } ]
+          "title" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "workItemId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "effort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "projectName" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "projectId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "workItemTitle" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "developerName" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "closedOn" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
       },
-      "task" : {
-        "required" : [ "workItemId" ],
+      "taskParameters" : {
+        "required" : [ "close", "workItemId" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -467,6 +502,10 @@
             "type" : "number",
             "format" : "decimal",
             "nullable" : true
+          },
+          "close" : {
+            "type" : "boolean",
+            "nullable" : false
           }
         },
         "additionalProperties" : false
