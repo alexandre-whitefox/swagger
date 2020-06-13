@@ -79,6 +79,24 @@
         }
       }
     },
+    "/notifications" : {
+      "get" : {
+        "summary" : "get number of active notifications",
+        "operationId" : "notifications",
+        "responses" : {
+          "200" : {
+            "description" : "operation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/operationStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/history" : {
       "get" : {
         "summary" : "get last 50 operations",
@@ -91,7 +109,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/operationStatus"
+                    "$ref" : "#/components/schemas/notificationResult"
                   }
                 }
               }
@@ -103,6 +121,16 @@
   },
   "components" : {
     "schemas" : {
+      "notificationResult" : {
+        "required" : [ "total" ],
+        "type" : "object",
+        "properties" : {
+          "total" : {
+            "type" : "integer",
+            "nullable" : false
+          }
+        }
+      },
       "operation" : {
         "required" : [ "id" ],
         "type" : "object",
@@ -138,6 +166,11 @@
         }, {
           "type" : "object",
           "properties" : {
+            "finishedNotification" : {
+              "type" : "boolean",
+              "description" : "set to true when finshed until clear or 24h",
+              "nullable" : false
+            },
             "started" : {
               "type" : "string",
               "format" : "date-time",
