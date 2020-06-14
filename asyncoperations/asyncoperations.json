@@ -109,7 +109,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/notificationResult"
+                    "$ref" : "#/components/schemas/operation"
                   }
                 }
               }
