@@ -35,7 +35,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/operationStatus"
+                  "$ref" : "#/components/schemas/operation"
                 }
               }
             }
@@ -49,14 +49,14 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/operation"
+                "$ref" : "#/components/schemas/operationParameters"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "operation result"
+            "description" : "operation created"
           }
         }
       },
@@ -67,14 +67,14 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/operation"
+                "$ref" : "#/components/schemas/operationParameters"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "operation result"
+            "description" : "operation updated"
           }
         }
       }
@@ -89,7 +89,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/operationStatus"
+                  "$ref" : "#/components/schemas/operation"
                 }
               }
             }
@@ -131,7 +131,7 @@
           }
         }
       },
-      "operation" : {
+      "operationParameters" : {
         "required" : [ "error", "finished", "id" ],
         "type" : "object",
         "properties" : {
@@ -163,7 +163,7 @@
           }
         }
       },
-      "operationStatus" : {
+      "operation" : {
         "required" : [ "status" ],
         "type" : "object",
         "properties" : {
