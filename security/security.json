@@ -2,7 +2,7 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "White Fox Security API",
-    "description" : "Api para login e Permissões",
+    "description" : "Simple Api for user authentication with JWT Tokens",
     "version" : "1.0.0"
   },
   "servers" : [ {
@@ -52,7 +52,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "detalhes do usuario e permissões na aplicação",
+            "description" : "user details",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -96,7 +96,7 @@
     },
     "/changePassword" : {
       "post" : {
-        "summary" : "troca a senha de um usuario logado",
+        "summary" : "changes password of an authenticated user",
         "operationId" : "changePassowrd",
         "requestBody" : {
           "content" : {
@@ -112,7 +112,7 @@
             "description" : "unauthorized"
           },
           "200" : {
-            "description" : "token de acesso",
+            "description" : "access token JWT",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -374,5 +374,6 @@
         } ]
       }
     }
-  }
+  },
+  "x-azure-api-id" : "sh-733bcc0b-82b6-41ea-9283-fa80d2a003b0"
 }
