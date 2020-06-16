@@ -92,5 +92,5 @@
       }
     }
   },
-  "x-azure-api-id" : "white-fox-security-operations-api"
+  "x-azure-api-id" : "white-fox-security-api"
 }
