@@ -14,6 +14,17 @@
       "get" : {
         "summary" : "returns a list of all users",
         "operationId" : "users",
+        "parameters" : [ {
+          "name" : "applicationId",
+          "in" : "query",
+          "description" : "application Id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "list o users",
