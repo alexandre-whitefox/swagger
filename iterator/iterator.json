@@ -23,7 +23,10 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/UsersResponse"
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserDetail"
+                  }
                 }
               }
             }
@@ -272,38 +275,6 @@
   },
   "components" : {
     "schemas" : {
-      "UsersResponse" : {
-        "type" : "object",
-        "properties" : {
-          "users" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/UserDetail"
-            }
-          },
-          "roles" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/KeyValueString"
-            }
-          }
-        },
-        "additionalProperties" : false
-      },
-      "KeyValueString" : {
-        "type" : "object",
-        "properties" : {
-          "key" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "value" : {
-            "type" : "string",
-            "nullable" : false
-          }
-        },
-        "additionalProperties" : false
-      },
       "UserDetail" : {
         "type" : "object",
         "properties" : {
@@ -323,12 +294,6 @@
           "nickname" : {
             "type" : "string",
             "nullable" : false
-          },
-          "roles" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
           }
         },
         "additionalProperties" : false
