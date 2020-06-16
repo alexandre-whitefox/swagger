@@ -1,12 +1,12 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "White Fox Security Management Api",
-    "description" : "API for security management",
+    "title" : "White Fox Security Api",
+    "description" : "API for security operations",
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://whitefoxsecurityservice.azurewebsites.net/management",
+    "url" : "http://whitefoxsecurityservice.azurewebsites.net/securityoperations",
     "description" : "api server"
   } ],
   "paths" : {
@@ -81,5 +81,5 @@
       }
     }
   },
-  "x-azure-api-id" : "white-fox-security-management-api"
+  "x-azure-api-id" : "white-fox-security-operations-api"
 }
