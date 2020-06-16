@@ -10,6 +10,24 @@
     "description" : "White Fox Api"
   } ],
   "paths" : {
+    "/users" : {
+      "get" : {
+        "summary" : "returns a list of all users",
+        "operationId" : "users",
+        "responses" : {
+          "200" : {
+            "description" : "list o users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/token" : {
       "post" : {
         "summary" : "validates user and password",
@@ -174,6 +192,54 @@
   },
   "components" : {
     "schemas" : {
+      "UsersResponse" : {
+        "type" : "object",
+        "properties" : {
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/UserDetail"
+            }
+          },
+          "roles" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/KeyValueString"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "KeyValueString" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "value" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "UserDetail" : {
+        "type" : "object",
+        "properties" : {
+          "login" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "roles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
       "PasswordKeyParameters" : {
         "required" : [ "application", "key" ],
         "type" : "object",
