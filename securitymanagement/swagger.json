@@ -1,0 +1,85 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "White Fox Security Management Api",
+    "description" : "API for security management",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://whitefoxsecurityservice.azurewebsites.net/management",
+    "description" : "api server"
+  } ],
+  "paths" : {
+    "/users" : {
+      "get" : {
+        "summary" : "returns a list of all users",
+        "operationId" : "users",
+        "responses" : {
+          "200" : {
+            "description" : "list o users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UsersResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "UsersResponse" : {
+        "type" : "object",
+        "properties" : {
+          "users" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/UserDetail"
+            }
+          },
+          "roles" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/KeyValueString"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "KeyValueString" : {
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "value" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "UserDetail" : {
+        "type" : "object",
+        "properties" : {
+          "login" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "roles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        },
+        "additionalProperties" : false
+      }
+    }
+  },
+  "x-azure-api-id" : "white-fox-security-management-api"
+}
