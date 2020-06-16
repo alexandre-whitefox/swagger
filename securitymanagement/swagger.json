@@ -54,20 +54,20 @@
           "roles" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/KeyValueString"
+              "$ref" : "#/components/schemas/IdName"
             }
           }
         },
         "additionalProperties" : false
       },
-      "KeyValueString" : {
+      "IdName" : {
         "type" : "object",
         "properties" : {
-          "key" : {
+          "id" : {
             "type" : "string",
             "nullable" : false
           },
-          "value" : {
+          "name" : {
             "type" : "string",
             "nullable" : false
           }
