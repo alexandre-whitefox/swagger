@@ -1,0 +1,491 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "White Fox Authentication API",
+    "description" : "Simple Api for user authentication with JWT Tokens",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://whitefoxsecurityservice.azurewebsites.net/authentication",
+    "description" : "White Fox Api"
+  } ],
+  "paths" : {
+    "/token" : {
+      "post" : {
+        "summary" : "validates user and password",
+        "operationId" : "token",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details and permissions, with a JWT and refresh token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tokenProvider" : {
+      "post" : {
+        "summary" : "login with provider and access token",
+        "operationId" : "tokenProvider",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginProviderParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details and permissions, with a JWT and refresh token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tokenVinculate" : {
+      "post" : {
+        "summary" : "vinculate a provider login (facebook, google etc.)",
+        "operationId" : "tokenVinculate",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginVinculateParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details and permissions, with a JWT and refresh token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/findUserId" : {
+      "post" : {
+        "summary" : "find the userId corresponding to the network name provided",
+        "operationId" : "findUserId",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StringOnly"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/FindUserResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/refreshToken" : {
+      "post" : {
+        "summary" : "creates a new JWT and refresh tokens",
+        "operationId" : "refreshToken",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RefreshTokenParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "401" : {
+            "description" : "unauthorized"
+          },
+          "200" : {
+            "description" : "token de acesso",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/TokenResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/changePassword" : {
+      "post" : {
+        "summary" : "changes password of an authenticated user",
+        "operationId" : "changePassowrd",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ChangePasswordParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "401" : {
+            "description" : "unauthorized"
+          },
+          "200" : {
+            "description" : "access token JWT",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ChangePasswordOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sendPasswordKey" : {
+      "post" : {
+        "summary" : "send a password key to the user email address",
+        "operationId" : "sendPasswordKey",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SendPasswordKeyParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "if no user or email is found, nothing is reported"
+          }
+        }
+      }
+    },
+    "/validatePasswordKey" : {
+      "post" : {
+        "summary" : "validates if a password key is still valid",
+        "operationId" : "validatePasswordKey",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PasswordKeyParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "validation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/PasswordKey"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "PasswordKeyParameters" : {
+        "required" : [ "application", "key" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "key" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ChangePasswordParameters" : {
+        "required" : [ "applicationId" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "oldPassword" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "newPassword" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "passwordKey" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "SendPasswordKeyParameters" : {
+        "required" : [ "application", "email", "urlTemplate" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "email" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "urlTemplate" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ChangePasswordOutcome" : {
+        "required" : [ "result" ],
+        "type" : "object",
+        "properties" : {
+          "result" : {
+            "type" : "string",
+            "description" : "0-based",
+            "nullable" : false,
+            "enum" : [ "Succces", "FailedInvalidUserPassword", "FailedDisabledUser", "FailedLockedUser", "InvalidPasswordLength", "InvalidPasswordComplexity", "PasswordRecentlyUsed", "InvalidChangePasswordKey" ]
+          }
+        }
+      },
+      "RefreshTokenParameters" : {
+        "required" : [ "applicatioId", "clientId", "token" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          },
+          "token" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "LoginVinculateParameters" : {
+        "required" : [ "accessToken", "applicatioId", "password", "providerType", "userName" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "userName" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "password" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "accessToken" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          },
+          "providerType" : {
+            "type" : "string",
+            "enum" : [ "facebook", "google" ]
+          }
+        },
+        "additionalProperties" : false
+      },
+      "LoginParameters" : {
+        "required" : [ "applicatioId", "password", "userName" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "userName" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "password" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "LoginProviderParameters" : {
+        "required" : [ "accessToken", "applicatioId", "providerType" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "accessToken" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "providerType" : {
+            "type" : "string",
+            "enum" : [ "facebook", "google" ]
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "TokenResult" : {
+        "type" : "object",
+        "properties" : {
+          "token" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "refreshToken" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "userName" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "permissions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "integer"
+            }
+          },
+          "expiresIn" : {
+            "type" : "integer",
+            "description" : "expiration time in seconds",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "FindUserResult" : {
+        "required" : [ "userId" ],
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "PasswordKey" : {
+        "required" : [ "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "StringOnly" : {
+        "required" : [ "text" ],
+        "type" : "object",
+        "properties" : {
+          "text" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
+      "LoginOutcome" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/TokenResult"
+        }, {
+          "required" : [ "result" ],
+          "type" : "object",
+          "properties" : {
+            "result" : {
+              "type" : "string",
+              "description" : "0-based",
+              "nullable" : false,
+              "enum" : [ "Succces", "SuccessShouldChangePassword", "FailedExpiredPassword", "FailedInvalidUserPassword", "FailedForbiddenApplication", "FailedDisabledUser", "FailedLockedUser", "FailedInvalidToken", "FailedExpiredToken", "FailedUsedToken" ]
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      }
+    }
+  },
+  "x-azure-api-id" : "white-fox-authentication-api"
+}
