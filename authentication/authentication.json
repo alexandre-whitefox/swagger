@@ -228,6 +228,10 @@
   },
   "components" : {
     "schemas" : {
+      "ProviderType" : {
+        "type" : "string",
+        "enum" : [ "facebook", "google" ]
+      },
       "PasswordKeyParameters" : {
         "required" : [ "application", "key" ],
         "type" : "object",
@@ -348,8 +352,7 @@
             "nullable" : true
           },
           "providerType" : {
-            "type" : "string",
-            "enum" : [ "facebook", "google" ]
+            "$ref" : "#/components/schemas/ProviderType"
           }
         },
         "additionalProperties" : false
@@ -393,8 +396,7 @@
             "nullable" : false
           },
           "providerType" : {
-            "type" : "string",
-            "enum" : [ "facebook", "google" ]
+            "$ref" : "#/components/schemas/ProviderType"
           },
           "clientId" : {
             "type" : "string",
