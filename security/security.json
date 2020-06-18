@@ -13,12 +13,66 @@
     "/token" : {
       "post" : {
         "summary" : "validates user and password",
-        "operationId" : "login",
+        "operationId" : "token",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
                 "$ref" : "#/components/schemas/LoginParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details and permissions, with a JWT and refresh token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tokenProvider" : {
+      "post" : {
+        "summary" : "login with provider and access token",
+        "operationId" : "tokenProvider",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginProviderParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "user details and permissions, with a JWT and refresh token",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginOutcome"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tokenVinculate" : {
+      "post" : {
+        "summary" : "vinculate a provider login (facebook, google etc.)",
+        "operationId" : "tokenVinculate",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/LoginVinculateParameters"
               }
             }
           }
@@ -267,6 +321,38 @@
         },
         "additionalProperties" : false
       },
+      "LoginVinculateParameters" : {
+        "required" : [ "accessToken", "applicatioId", "password", "providerType", "userName" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "userName" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "password" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "accessToken" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          },
+          "providerType" : {
+            "$ref" : "#/components/schemas/ProviderType"
+          }
+        },
+        "additionalProperties" : false
+      },
       "LoginParameters" : {
         "required" : [ "applicatioId", "password", "userName" ],
         "type" : "object",
@@ -283,6 +369,34 @@
           "password" : {
             "type" : "string",
             "nullable" : false
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ProviderType" : {
+        "type" : "string",
+        "enum" : [ "facebook", "google" ]
+      },
+      "LoginProviderParameters" : {
+        "required" : [ "accessToken", "applicatioId", "providerType" ],
+        "type" : "object",
+        "properties" : {
+          "applicationId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "accessToken" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "providerType" : {
+            "$ref" : "#/components/schemas/ProviderType"
           },
           "clientId" : {
             "type" : "string",
