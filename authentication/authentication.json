@@ -228,11 +228,6 @@
   },
   "components" : {
     "schemas" : {
-      "ProviderType" : {
-        "type" : "integer",
-        "format" : "int32",
-        "enum" : [ null, null ]
-      },
       "PasswordKeyParameters" : {
         "required" : [ "application", "key" ],
         "type" : "object",
@@ -352,8 +347,9 @@
             "format" : "uuid",
             "nullable" : true
           },
-          "providerType" : {
-            "$ref" : "#/components/schemas/ProviderType"
+          "ProviderType" : {
+            "type" : "string",
+            "enum" : [ "facebook", "google" ]
           }
         },
         "additionalProperties" : false
@@ -397,7 +393,8 @@
             "nullable" : false
           },
           "providerType" : {
-            "$ref" : "#/components/schemas/ProviderType"
+            "type" : "string",
+            "enum" : [ "facebook", "google" ]
           },
           "clientId" : {
             "type" : "string",
