@@ -379,8 +379,8 @@
         "additionalProperties" : false
       },
       "ProviderType" : {
-        "type" : "string",
-        "enum" : [ "facebook", "google" ]
+        "type" : "integer",
+        "enum" : [ null, null ]
       },
       "LoginProviderParameters" : {
         "required" : [ "accessToken", "applicatioId", "providerType" ],
