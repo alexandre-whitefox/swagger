@@ -347,7 +347,7 @@
             "format" : "uuid",
             "nullable" : true
           },
-          "ProviderType" : {
+          "providerType" : {
             "type" : "string",
             "enum" : [ "facebook", "google" ]
           }
