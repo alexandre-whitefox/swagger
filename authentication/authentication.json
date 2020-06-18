@@ -229,8 +229,9 @@
   "components" : {
     "schemas" : {
       "ProviderType" : {
-        "type" : "string",
-        "enum" : [ "facebook", "google" ]
+        "type" : "integer",
+        "format" : "int32",
+        "enum" : [ null, null ]
       },
       "PasswordKeyParameters" : {
         "required" : [ "application", "key" ],
