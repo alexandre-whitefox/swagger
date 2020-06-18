@@ -321,8 +321,8 @@
         },
         "additionalProperties" : false
       },
-      "LoginVinculateParameters" : {
-        "required" : [ "accessToken", "applicatioId", "password", "providerType", "userName" ],
+      "LoginProviderParameters" : {
+        "required" : [ "accessToken", "applicatioId", "providerType" ],
         "type" : "object",
         "properties" : {
           "applicationId" : {
@@ -330,6 +330,24 @@
             "format" : "uuid",
             "nullable" : false
           },
+          "accessToken" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "providerType" : {
+            "type" : "string",
+            "enum" : [ "facebook", "google" ]
+          },
+          "clientId" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "LoginVinculateParameters" : {
+        "properties" : {
           "userName" : {
             "type" : "string",
             "nullable" : false
@@ -337,21 +355,15 @@
           "password" : {
             "type" : "string",
             "nullable" : false
-          },
-          "accessToken" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "clientId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "nullable" : true
-          },
-          "providerType" : {
-            "$ref" : "#/components/schemas/ProviderType"
           }
         },
-        "additionalProperties" : false
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/LoginProviderParameters"
+        }, {
+          "required" : [ "password", "userName" ],
+          "type" : "object",
+          "additionalProperties" : false
+        } ]
       },
       "LoginParameters" : {
         "required" : [ "applicatioId", "password", "userName" ],
@@ -369,34 +381,6 @@
           "password" : {
             "type" : "string",
             "nullable" : false
-          },
-          "clientId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "nullable" : true
-          }
-        },
-        "additionalProperties" : false
-      },
-      "ProviderType" : {
-        "type" : "integer",
-        "enum" : [ null, null ]
-      },
-      "LoginProviderParameters" : {
-        "required" : [ "accessToken", "applicatioId", "providerType" ],
-        "type" : "object",
-        "properties" : {
-          "applicationId" : {
-            "type" : "string",
-            "format" : "uuid",
-            "nullable" : false
-          },
-          "accessToken" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "providerType" : {
-            "$ref" : "#/components/schemas/ProviderType"
           },
           "clientId" : {
             "type" : "string",
