@@ -300,7 +300,7 @@
             "type" : "string",
             "description" : "0-based",
             "nullable" : false,
-            "enum" : [ "Succcess", "FailedInvalidUserPassword", "FailedDisabledUser", "FailedLockedUser", "InvalidPasswordLength", "InvalidPasswordComplexity", "PasswordRecentlyUsed", "InvalidChangePasswordKey" ]
+            "enum" : [ "Success", "FailedInvalidUserPassword", "FailedDisabledUser", "FailedLockedUser", "InvalidPasswordLength", "InvalidPasswordComplexity", "PasswordRecentlyUsed", "InvalidChangePasswordKey" ]
           }
         }
       },
@@ -482,7 +482,7 @@
               "type" : "string",
               "description" : "0-based",
               "nullable" : false,
-              "enum" : [ "Succcess", "SuccessShouldChangePassword", "FailedExpiredPassword", "FailedInvalidUserPassword", "FailedForbiddenApplication", "FailedDisabledUser", "FailedLockedUser", "FailedInvalidToken", "FailedExpiredToken", "FailedUsedToken" ]
+              "enum" : [ "Success", "SuccessShouldChangePassword", "FailedExpiredPassword", "FailedInvalidUserPassword", "FailedForbiddenApplication", "FailedDisabledUser", "FailedLockedUser", "FailedInvalidToken", "FailedExpiredToken", "FailedUsedToken" ]
             }
           },
           "additionalProperties" : false
