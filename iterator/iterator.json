@@ -61,10 +61,118 @@
         }
       }
     },
+    "/operations/workItem" : {
+      "get" : {
+        "summary" : "get data about a workItem",
+        "operationId" : "getWorkItem",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "workItemId",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "workItem detail",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/taskResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "saves a new workItem",
+        "operationId" : "saveWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/taskParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "delete a work item",
+        "operationId" : "deleteWorkItem",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "taskId",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "updates a work item",
+        "operationId" : "updateWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/taskParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
-        "operationId" : "gettask",
+        "operationId" : "getTask",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -92,7 +200,7 @@
       },
       "post" : {
         "summary" : "saves a new task",
-        "operationId" : "savetask",
+        "operationId" : "saveTask",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -104,7 +212,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "resultado da ação",
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -117,7 +225,7 @@
       },
       "delete" : {
         "summary" : "delete a task",
-        "operationId" : "deletetask",
+        "operationId" : "deleteTask",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -132,7 +240,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "resultado da ação",
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -145,7 +253,7 @@
       },
       "patch" : {
         "summary" : "updates a task",
-        "operationId" : "updatetask",
+        "operationId" : "updateTask",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -157,7 +265,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "resultado da ação",
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -599,7 +707,7 @@
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/workItem"
+              "$ref" : "#/components/schemas/workItemDetail"
             }
           }
         },
@@ -843,7 +951,7 @@
         },
         "additionalProperties" : false
       },
-      "workItem" : {
+      "workItemDetail" : {
         "required" : [ "ae", "ee", "n" ],
         "type" : "object",
         "properties" : {
@@ -964,7 +1072,7 @@
           "lastItems" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/workItem"
+              "$ref" : "#/components/schemas/workItemDetail"
             }
           },
           "iteration" : {
