@@ -83,7 +83,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/taskResult"
+                  "$ref" : "#/components/schemas/workItemResult"
                 }
               }
             }
@@ -480,6 +480,64 @@
         },
         "additionalProperties" : false
       },
+      "workItemDetail" : {
+        "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "workItemTypeId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "estimatedEffort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "projectName" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "projectId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "closedOn" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "workItemResult" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/actionResult"
+        }, {
+          "required" : [ "data" ],
+          "type" : "object",
+          "properties" : {
+            "data" : {
+              "$ref" : "#/components/schemas/workItemDetail"
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      },
       "taskResult" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
@@ -707,7 +765,7 @@
           "items" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/workItemDetail"
+              "$ref" : "#/components/schemas/workItemSummary"
             }
           }
         },
@@ -951,7 +1009,7 @@
         },
         "additionalProperties" : false
       },
-      "workItemDetail" : {
+      "workItemSummary" : {
         "required" : [ "ae", "ee", "n" ],
         "type" : "object",
         "properties" : {
@@ -1072,7 +1130,7 @@
           "lastItems" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/workItemDetail"
+              "$ref" : "#/components/schemas/workItemSummary"
             }
           },
           "iteration" : {
