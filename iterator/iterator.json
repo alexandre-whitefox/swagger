@@ -879,6 +879,12 @@
             "description" : "workitem closed",
             "nullable" : true
           },
+          "l" : {
+            "type" : "string",
+            "description" : "last update",
+            "format" : "date-time",
+            "nullable" : true
+          },
           "tasks" : {
             "type" : "array",
             "items" : {
