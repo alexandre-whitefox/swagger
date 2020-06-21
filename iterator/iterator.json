@@ -19,7 +19,7 @@
         "operationId" : "users",
         "responses" : {
           "200" : {
-            "description" : "list o users",
+            "description" : "list of users",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -34,22 +34,76 @@
         }
       }
     },
-    "/operations/task/close" : {
+    "/operations/workitem/close" : {
       "post" : {
-        "summary" : "closes new task",
-        "operationId" : "closetask",
+        "summary" : "closes workItem",
+        "operationId" : "closeWorkItemask",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/closeTaskParameters"
+                "$ref" : "#/components/schemas/idParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "resultado da ação",
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workitem/activate" : {
+      "post" : {
+        "summary" : "activates a workitem",
+        "operationId" : "activateWorkItemask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workitem/deactivate" : {
+      "post" : {
+        "summary" : "deactivates a workitem",
+        "operationId" : "deactivateWorkItemask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -97,7 +151,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/taskParameters"
+                "$ref" : "#/components/schemas/workItemParameters"
               }
             }
           }
@@ -121,7 +175,7 @@
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
-          "description" : "taskId",
+          "description" : "workItemId",
           "required" : true,
           "style" : "form",
           "explode" : true,
@@ -150,7 +204,34 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/taskParameters"
+                "$ref" : "#/components/schemas/workItemParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/task/close" : {
+      "post" : {
+        "summary" : "closes a task",
+        "operationId" : "closeTask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/closeTaskParameters"
               }
             }
           }
@@ -303,7 +384,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/idOnly"
+                "$ref" : "#/components/schemas/idParameter"
               }
             }
           }
@@ -330,7 +411,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/idOnly"
+                "$ref" : "#/components/schemas/idParameter"
               }
             }
           }
@@ -480,6 +561,36 @@
         },
         "additionalProperties" : false
       },
+      "taskSummary" : {
+        "required" : [ "id", "title" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "developer" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "effort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "closedOn" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
       "workItemDetail" : {
         "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
         "type" : "object",
@@ -520,6 +631,12 @@
             "type" : "string",
             "format" : "date-time",
             "nullable" : true
+          },
+          "tasks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/taskSummary"
+            }
           }
         },
         "additionalProperties" : false
@@ -686,6 +803,41 @@
         },
         "additionalProperties" : false
       },
+      "workItemParameters" : {
+        "required" : [ "close", "projectId", "workItemTypeId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "projectId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "estimatedEffort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "workItemTypeId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
       "taskParameters" : {
         "required" : [ "close", "workItemId" ],
         "type" : "object",
@@ -833,7 +985,7 @@
         },
         "additionalProperties" : false
       },
-      "idOnly" : {
+      "idParameter" : {
         "required" : [ "id" ],
         "type" : "object",
         "properties" : {
