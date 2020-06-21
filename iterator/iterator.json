@@ -37,7 +37,7 @@
     "/operations/workitem/close" : {
       "post" : {
         "summary" : "closes workItem",
-        "operationId" : "closeWorkItemask",
+        "operationId" : "closeWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -64,7 +64,34 @@
     "/operations/workitem/activate" : {
       "post" : {
         "summary" : "activates a workitem",
-        "operationId" : "activateWorkItemask",
+        "operationId" : "activateWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workitem/open" : {
+      "post" : {
+        "summary" : "opens a closed workitem",
+        "operationId" : "openWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -91,7 +118,7 @@
     "/operations/workitem/deactivate" : {
       "post" : {
         "summary" : "deactivates a workitem",
-        "operationId" : "deactivateWorkItemask",
+        "operationId" : "deactivateWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
