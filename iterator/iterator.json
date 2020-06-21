@@ -864,11 +864,6 @@
             "type" : "string",
             "nullable" : true
           },
-          "projectId" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : false
-          },
           "estimatedEffort" : {
             "type" : "number",
             "format" : "decimal",
