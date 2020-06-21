@@ -674,7 +674,7 @@
           "state" : {
             "type" : "string",
             "nullable" : false,
-            "enum" : [ "Backlog,", "Blocked,", "Active,", "WaitingRelease,", "Released,", "Closed,", "Cancelled" ]
+            "enum" : [ "Backlog", "Blocked", "Active", "WaitingRelease", "Released", "Closed", "Cancelled" ]
           },
           "projectId" : {
             "type" : "integer",
