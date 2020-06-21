@@ -150,7 +150,7 @@
           "name" : "id",
           "in" : "query",
           "description" : "workItemId",
-          "required" : true,
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
@@ -619,6 +619,27 @@
         "additionalProperties" : false
       },
       "workItemDetail" : {
+        "type" : "object",
+        "properties" : {
+          "instance" : {
+            "$ref" : "#/components/schemas/workItemInstance"
+          },
+          "projects" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/idN"
+            }
+          },
+          "types" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/idN"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "workItemInstance" : {
         "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
         "type" : "object",
         "properties" : {
