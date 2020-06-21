@@ -666,10 +666,6 @@
             "format" : "decimal",
             "nullable" : true
           },
-          "projectName" : {
-            "type" : "string",
-            "nullable" : false
-          },
           "projectId" : {
             "type" : "integer",
             "format" : "int32",
