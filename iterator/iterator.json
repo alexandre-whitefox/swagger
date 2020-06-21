@@ -848,7 +848,6 @@
         "additionalProperties" : false
       },
       "workItemParameters" : {
-        "required" : [ "close", "projectId", "workItemTypeId" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -869,10 +868,16 @@
             "format" : "decimal",
             "nullable" : true
           },
+          "projectId" : {
+            "type" : "integer",
+            "description" : "only applicable to new workItems",
+            "format" : "int32",
+            "nullable" : true
+          },
           "workItemTypeId" : {
             "type" : "integer",
             "format" : "int32",
-            "nullable" : false
+            "nullable" : true
           }
         },
         "additionalProperties" : false
