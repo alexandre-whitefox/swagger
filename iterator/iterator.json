@@ -13,6 +13,56 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
+    "/files/upload" : {
+      "post" : {
+        "summary" : "Uploads a file.",
+        "operationId" : "upload",
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file sabed"
+          }
+        }
+      }
+    },
+    "/files/download" : {
+      "get" : {
+        "summary" : "Get the file content",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "file id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "file content",
+            "content" : {
+              "application/octet-stream" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users" : {
       "get" : {
         "summary" : "returns a list of all users",
@@ -1351,6 +1401,26 @@
           }
         },
         "additionalProperties" : false
+      },
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "evidence" ]
+          },
+          "referenceId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "file" : {
+            "type" : "string",
+            "format" : "binary",
+            "nullable" : false
+          }
+        }
       }
     },
     "securitySchemes" : {
