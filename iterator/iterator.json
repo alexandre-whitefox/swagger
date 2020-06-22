@@ -15,7 +15,7 @@
   "paths" : {
     "/files/upload" : {
       "post" : {
-        "summary" : "Uploads a file.",
+        "summary" : "Uploads a file",
         "operationId" : "upload",
         "requestBody" : {
           "content" : {
