@@ -28,7 +28,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "file sabed"
+            "description" : "file saved"
           }
         }
       }
@@ -1413,6 +1413,11 @@
           "referenceId" : {
             "type" : "integer",
             "format" : "int32",
+            "nullable" : false
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
             "nullable" : false
           },
           "file" : {
