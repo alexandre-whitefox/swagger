@@ -13,27 +13,7 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
-    "/files/upload" : {
-      "post" : {
-        "summary" : "Uploads a file",
-        "operationId" : "upload",
-        "requestBody" : {
-          "content" : {
-            "multipart/form-data" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/body"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "file saved"
-          }
-        }
-      }
-    },
-    "/files/download" : {
+    "/file" : {
       "get" : {
         "summary" : "Get the file content",
         "parameters" : [ {
@@ -59,6 +39,44 @@
                 }
               }
             }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Uploads a file",
+        "operationId" : "upload",
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file saved"
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Delete the file",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "file id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "format" : "uuid"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "file removed"
           }
         }
       }
