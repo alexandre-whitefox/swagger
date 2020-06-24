@@ -13,6 +13,78 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
+    "/billingCycle/Burndown" : {
+      "post" : {
+        "summary" : "get the burndown para billing cycles",
+        "operationId" : "burndownBC",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "burndown",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/billingCycleBurndown"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/billingCycle/Report" : {
+      "post" : {
+        "summary" : "get the billing cycle report",
+        "operationId" : "reportBC",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "report",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/billingCycleReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dashboard" : {
+      "get" : {
+        "summary" : "get the current user dashboard",
+        "operationId" : "dashboard",
+        "responses" : {
+          "200" : {
+            "description" : "dashboard for tasks",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/dashboard"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/file" : {
       "get" : {
         "summary" : "Get the file content",
@@ -81,270 +153,6 @@
         }
       }
     },
-    "/users" : {
-      "get" : {
-        "summary" : "returns a list of all users",
-        "operationId" : "users",
-        "responses" : {
-          "200" : {
-            "description" : "list of users",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/UserDetail"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/workitem/close" : {
-      "post" : {
-        "summary" : "closes workItem",
-        "operationId" : "closeWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/workitem/activate" : {
-      "post" : {
-        "summary" : "activates a workitem",
-        "operationId" : "activateWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/workitem/open" : {
-      "post" : {
-        "summary" : "opens a closed workitem",
-        "operationId" : "openWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/workitem/deactivate" : {
-      "post" : {
-        "summary" : "deactivates a workitem",
-        "operationId" : "deactivateWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/workItem" : {
-      "get" : {
-        "summary" : "get data about a workItem",
-        "operationId" : "getWorkItem",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "query",
-          "description" : "workItemId",
-          "required" : false,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "workItem detail",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/workItemResult"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post" : {
-        "summary" : "saves a new workItem",
-        "operationId" : "saveWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/workItemParameters"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete" : {
-        "summary" : "delete a work item",
-        "operationId" : "deleteWorkItem",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "query",
-          "description" : "workItemId",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "resultado da ação",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch" : {
-        "summary" : "updates a work item",
-        "operationId" : "updateWorkItem",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/workItemParameters"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/operations/task/close" : {
-      "post" : {
-        "summary" : "closes a task",
-        "operationId" : "closeTask",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/closeTaskParameters"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "action result",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
@@ -367,7 +175,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/taskResult"
+                  "$ref" : "#/components/schemas/inline_response_200"
                 }
               }
             }
@@ -453,17 +261,134 @@
         }
       }
     },
-    "/dashboard" : {
+    "/operations/task/close" : {
+      "post" : {
+        "summary" : "closes a task",
+        "operationId" : "closeTask",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/closeTaskParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workItem" : {
       "get" : {
-        "summary" : "get the current user dashboard",
-        "operationId" : "dashboard",
+        "summary" : "get data about a workItem",
+        "operationId" : "getWorkItem",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "workItemId",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
         "responses" : {
           "200" : {
-            "description" : "dashboard for tasks",
+            "description" : "workItem detail",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/dashboard"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "saves a new workItem",
+        "operationId" : "saveWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/workItemParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "delete a work item",
+        "operationId" : "deleteWorkItem",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "workItemId",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "resultado da ação",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "updates a work item",
+        "operationId" : "updateWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/workItemParameters"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
                 }
               }
             }
@@ -471,10 +396,10 @@
         }
       }
     },
-    "/billingCycle/Burndown" : {
+    "/operations/workitem/activate" : {
       "post" : {
-        "summary" : "get the burndown para billing cycles",
-        "operationId" : "burndownBC",
+        "summary" : "activates a workitem",
+        "operationId" : "activateWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -486,11 +411,11 @@
         },
         "responses" : {
           "200" : {
-            "description" : "burndown",
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/billingCycleBurndown"
+                  "$ref" : "#/components/schemas/actionResult"
                 }
               }
             }
@@ -498,10 +423,10 @@
         }
       }
     },
-    "/billingCycle/Report" : {
+    "/operations/workitem/close" : {
       "post" : {
-        "summary" : "get the billing cycle report",
-        "operationId" : "reportBC",
+        "summary" : "closes workItem",
+        "operationId" : "closeWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -513,11 +438,65 @@
         },
         "responses" : {
           "200" : {
-            "description" : "report",
+            "description" : "action result",
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/billingCycleReport"
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workitem/deactivate" : {
+      "post" : {
+        "summary" : "deactivates a workitem",
+        "operationId" : "deactivateWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/operations/workitem/open" : {
+      "post" : {
+        "summary" : "opens a closed workitem",
+        "operationId" : "openWorkItem",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/idParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "action result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
                 }
               }
             }
@@ -548,6 +527,27 @@
                   "additionalProperties" : false,
                   "items" : {
                     "$ref" : "#/components/schemas/billingCenter"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "summary" : "returns a list of all users",
+        "operationId" : "users",
+        "responses" : {
+          "200" : {
+            "description" : "list of users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserDetail"
                   }
                 }
               }
@@ -686,6 +686,21 @@
         },
         "additionalProperties" : false
       },
+      "uidN" : {
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "uuid",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        }
+      },
       "workItemDetail" : {
         "type" : "object",
         "properties" : {
@@ -759,37 +774,15 @@
             "items" : {
               "$ref" : "#/components/schemas/taskSummary"
             }
+          },
+          "evidences" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/uidN"
+            }
           }
         },
         "additionalProperties" : false
-      },
-      "workItemResult" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/actionResult"
-        }, {
-          "required" : [ "data" ],
-          "type" : "object",
-          "properties" : {
-            "data" : {
-              "$ref" : "#/components/schemas/workItemDetail"
-            }
-          },
-          "additionalProperties" : false
-        } ]
-      },
-      "taskResult" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/actionResult"
-        }, {
-          "required" : [ "data" ],
-          "type" : "object",
-          "properties" : {
-            "data" : {
-              "$ref" : "#/components/schemas/taskDetail"
-            }
-          },
-          "additionalProperties" : false
-        } ]
       },
       "burndownItem" : {
         "required" : [ "a", "d", "p" ],
@@ -1423,14 +1416,9 @@
       "body" : {
         "type" : "object",
         "properties" : {
-          "type" : {
+          "file" : {
             "type" : "string",
-            "nullable" : false,
-            "enum" : [ "workitem" ]
-          },
-          "referenceId" : {
-            "type" : "integer",
-            "format" : "int32",
+            "format" : "binary",
             "nullable" : false
           },
           "id" : {
@@ -1438,12 +1426,45 @@
             "format" : "uuid",
             "nullable" : false
           },
-          "file" : {
-            "type" : "string",
-            "format" : "binary",
+          "referenceId" : {
+            "type" : "integer",
+            "format" : "int32",
             "nullable" : false
+          },
+          "type" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "workitem" ]
           }
         }
+      },
+      "inline_response_200" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/actionResult"
+        }, {
+          "required" : [ "data" ],
+          "type" : "object",
+          "properties" : {
+            "data" : {
+              "$ref" : "#/components/schemas/taskDetail"
+            }
+          },
+          "additionalProperties" : false
+        } ]
+      },
+      "inline_response_200_1" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/actionResult"
+        }, {
+          "required" : [ "data" ],
+          "type" : "object",
+          "properties" : {
+            "data" : {
+              "$ref" : "#/components/schemas/workItemDetail"
+            }
+          },
+          "additionalProperties" : false
+        } ]
       }
     },
     "securitySchemes" : {
