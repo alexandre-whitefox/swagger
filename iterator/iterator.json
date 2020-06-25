@@ -324,7 +324,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/workItemParameters"
+                "$ref" : "#/components/schemas/body_1"
               }
             }
           }
@@ -1464,6 +1464,21 @@
             }
           },
           "additionalProperties" : false
+        } ]
+      },
+      "body_1" : {
+        "required" : [ "active" ],
+        "type" : "object",
+        "properties" : {
+          "active" : {
+            "type" : "boolean",
+            "description" : "creates the worktiem activated",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false,
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/workItemParameters"
         } ]
       }
     },
