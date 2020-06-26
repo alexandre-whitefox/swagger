@@ -705,7 +705,7 @@
         "type" : "object",
         "properties" : {
           "instance" : {
-            "$ref" : "#/components/schemas/workItemInstance"
+            "$ref" : "#/components/schemas/workItemDetail_instance"
           },
           "projects" : {
             "type" : "array",
@@ -717,68 +717,6 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/idN"
-            }
-          }
-        },
-        "additionalProperties" : false
-      },
-      "workItemInstance" : {
-        "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
-        "type" : "object",
-        "properties" : {
-          "id" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : false
-          },
-          "title" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "description" : {
-            "type" : "string",
-            "nullable" : true
-          },
-          "workItemTypeId" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : false
-          },
-          "estimatedEffort" : {
-            "type" : "number",
-            "format" : "decimal",
-            "nullable" : true
-          },
-          "effort" : {
-            "type" : "number",
-            "format" : "decimal",
-            "nullable" : false
-          },
-          "state" : {
-            "type" : "string",
-            "nullable" : false,
-            "enum" : [ "Backlog", "Blocked", "Active", "WaitingRelease", "Released", "Closed", "Cancelled" ]
-          },
-          "projectId" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : false
-          },
-          "closedOn" : {
-            "type" : "string",
-            "format" : "date-time",
-            "nullable" : true
-          },
-          "tasks" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/taskSummary"
-            }
-          },
-          "evidences" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/uidN"
             }
           }
         },
@@ -1480,6 +1418,67 @@
         "allOf" : [ {
           "$ref" : "#/components/schemas/workItemParameters"
         } ]
+      },
+      "workItemDetail_instance" : {
+        "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "description" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "workItemTypeId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "estimatedEffort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "effort" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "state" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "Backlog", "Blocked", "Active", "WaitingRelease", "Released", "Closed", "Cancelled" ]
+          },
+          "projectId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "closedOn" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "tasks" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/taskSummary"
+            }
+          },
+          "evidences" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/uidN"
+            }
+          }
+        }
       }
     },
     "securitySchemes" : {
