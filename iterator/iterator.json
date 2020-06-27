@@ -153,6 +153,50 @@
         }
       }
     },
+    "/profile/billingCenters" : {
+      "get" : {
+        "summary" : "get the current user billing centers and cycles",
+        "parameters" : [ {
+          "name" : "billingOnly",
+          "in" : "query",
+          "description" : "for billing information",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : false
+          }
+        }, {
+          "name" : "backlogOnly",
+          "in" : "query",
+          "description" : "for backlog information",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "list of billing centers/cycles",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "additionalProperties" : false,
+                  "items" : {
+                    "$ref" : "#/components/schemas/billingCenter"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/file" : {
       "get" : {
         "summary" : "Get the file content",
@@ -561,36 +605,6 @@
           }
         }
       }
-    },
-    "/profile/billingCenters" : {
-      "post" : {
-        "summary" : "get the current user billing centers and cycles",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/billingCenterOptions"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "list of billing centers/cycles",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "additionalProperties" : false,
-                  "items" : {
-                    "$ref" : "#/components/schemas/billingCenter"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components" : {
@@ -673,21 +687,6 @@
           "message" : {
             "type" : "string",
             "nullable" : true
-          }
-        },
-        "additionalProperties" : false
-      },
-      "billingCenterOptions" : {
-        "required" : [ "backlogOnly", "billingOnly" ],
-        "type" : "object",
-        "properties" : {
-          "billingOnly" : {
-            "type" : "boolean",
-            "nullable" : false
-          },
-          "backlogOnly" : {
-            "type" : "boolean",
-            "nullable" : false
           }
         },
         "additionalProperties" : false
