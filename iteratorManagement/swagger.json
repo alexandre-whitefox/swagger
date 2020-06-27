@@ -13,7 +13,6 @@
     "/keepAlive" : {
       "get" : {
         "summary" : "generates a database access to prevent system from pausing",
-        "operationId" : "keepAlive",
         "responses" : {
           "200" : {
             "description" : "Ok"
@@ -24,7 +23,16 @@
     "/updatedashboards" : {
       "post" : {
         "summary" : "updates dashboard",
-        "operationId" : "dashboards",
+        "responses" : {
+          "200" : {
+            "description" : "Ok"
+          }
+        }
+      }
+    },
+    "/dailyTasks" : {
+      "post" : {
+        "summary" : "executes daily tasks",
         "responses" : {
           "200" : {
             "description" : "Ok"
