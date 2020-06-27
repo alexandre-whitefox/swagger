@@ -13,10 +13,58 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
+    "/workItem/activeList" : {
+      "get" : {
+        "summary" : "gets the current active workItems",
+        "responses" : {
+          "200" : {
+            "description" : "list of projects/workItems",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/inline_response_200"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/workItem/backlog" : {
+      "get" : {
+        "summary" : "gets the current backlog workItems",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "project id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "list of workItems",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/workItemDigest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/billingCycle/Burndown" : {
       "post" : {
         "summary" : "get the burndown para billing cycles",
-        "operationId" : "burndownBC",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -28,7 +76,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "burndown",
+            "description" : "burndown details",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -43,7 +91,6 @@
     "/billingCycle/Report" : {
       "post" : {
         "summary" : "get the billing cycle report",
-        "operationId" : "reportBC",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -156,7 +203,6 @@
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
-        "operationId" : "getTask",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -175,7 +221,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200"
+                  "$ref" : "#/components/schemas/inline_response_200_1"
                 }
               }
             }
@@ -209,7 +255,6 @@
       },
       "delete" : {
         "summary" : "delete a task",
-        "operationId" : "deleteTask",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -224,7 +269,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "action result",
+            "description" : "operation result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -237,7 +282,6 @@
       },
       "patch" : {
         "summary" : "updates a task",
-        "operationId" : "updateTask",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -249,7 +293,7 @@
         },
         "responses" : {
           "200" : {
-            "description" : "action result",
+            "description" : "operation result",
             "content" : {
               "application/json" : {
                 "schema" : {
@@ -264,7 +308,6 @@
     "/operations/task/close" : {
       "post" : {
         "summary" : "closes a task",
-        "operationId" : "closeTask",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -310,7 +353,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_1"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             }
@@ -319,7 +362,6 @@
       },
       "post" : {
         "summary" : "saves a new workItem",
-        "operationId" : "saveWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -344,7 +386,6 @@
       },
       "delete" : {
         "summary" : "delete a work item",
-        "operationId" : "deleteWorkItem",
         "parameters" : [ {
           "name" : "id",
           "in" : "query",
@@ -399,7 +440,6 @@
     "/operations/workitem/activate" : {
       "post" : {
         "summary" : "activates a workitem",
-        "operationId" : "activateWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -426,7 +466,6 @@
     "/operations/workitem/close" : {
       "post" : {
         "summary" : "closes workItem",
-        "operationId" : "closeWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -453,7 +492,6 @@
     "/operations/workitem/deactivate" : {
       "post" : {
         "summary" : "deactivates a workitem",
-        "operationId" : "deactivateWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -480,7 +518,6 @@
     "/operations/workitem/open" : {
       "post" : {
         "summary" : "opens a closed workitem",
-        "operationId" : "openWorkItem",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -507,7 +544,6 @@
     "/profile/billingCenters" : {
       "post" : {
         "summary" : "get the current user billing centers and cycles",
-        "operationId" : "billingCenters",
         "requestBody" : {
           "content" : {
             "application/json" : {
@@ -1214,6 +1250,26 @@
         },
         "additionalProperties" : false
       },
+      "workItemDigest" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "n" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "e" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
       "workItemSummary" : {
         "required" : [ "ae", "ee", "n" ],
         "type" : "object",
@@ -1351,6 +1407,23 @@
         },
         "additionalProperties" : false
       },
+      "inline_response_200" : {
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "description" : "projectName",
+            "nullable" : false
+          },
+          "workItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/workItemDigest"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
       "body" : {
         "type" : "object",
         "properties" : {
@@ -1376,7 +1449,7 @@
           }
         }
       },
-      "inline_response_200" : {
+      "inline_response_200_1" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
@@ -1390,7 +1463,7 @@
           "additionalProperties" : false
         } ]
       },
-      "inline_response_200_1" : {
+      "inline_response_200_2" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
