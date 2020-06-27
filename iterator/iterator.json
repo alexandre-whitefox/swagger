@@ -203,6 +203,27 @@
         }
       }
     },
+    "/profile/projects" : {
+      "get" : {
+        "summary" : "get the current user active projects",
+        "responses" : {
+          "200" : {
+            "description" : "list of projects",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "additionalProperties" : false,
+                  "items" : {
+                    "$ref" : "#/components/schemas/idN"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/file" : {
       "get" : {
         "summary" : "Get the file content",
