@@ -13,7 +13,7 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
-    "/workItem/activeList" : {
+    "/workItems/active" : {
       "get" : {
         "summary" : "gets the current active workItems",
         "responses" : {
@@ -33,7 +33,7 @@
         }
       }
     },
-    "/workItem/backlog" : {
+    "/workItems/backlog" : {
       "get" : {
         "summary" : "gets the current backlog workItems",
         "parameters" : [ {
@@ -62,7 +62,7 @@
         }
       }
     },
-    "/billingCycle/Burndown" : {
+    "/billingCycles/Burndown" : {
       "post" : {
         "summary" : "get the burndown para billing cycles",
         "requestBody" : {
@@ -88,7 +88,7 @@
         }
       }
     },
-    "/billingCycle/Report" : {
+    "/billingCycles/Report" : {
       "post" : {
         "summary" : "get the billing cycle report",
         "requestBody" : {
@@ -107,6 +107,27 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/billingCycleReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users" : {
+      "get" : {
+        "summary" : "returns a list of all users",
+        "operationId" : "users",
+        "responses" : {
+          "200" : {
+            "description" : "list of users",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/UserDetail"
+                  }
                 }
               }
             }
@@ -563,27 +584,6 @@
                   "additionalProperties" : false,
                   "items" : {
                     "$ref" : "#/components/schemas/billingCenter"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/users" : {
-      "get" : {
-        "summary" : "returns a list of all users",
-        "operationId" : "users",
-        "responses" : {
-          "200" : {
-            "description" : "list of users",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/UserDetail"
                   }
                 }
               }
