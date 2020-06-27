@@ -62,18 +62,21 @@
         }
       }
     },
-    "/billingCycles/Burndown" : {
-      "post" : {
+    "/billingCycles/burndown" : {
+      "get" : {
         "summary" : "get the burndown para billing cycles",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "billingCycle id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
           }
-        },
+        } ],
         "responses" : {
           "200" : {
             "description" : "burndown details",
@@ -88,18 +91,21 @@
         }
       }
     },
-    "/billingCycles/Report" : {
-      "post" : {
+    "/billingCycles/report" : {
+      "get" : {
         "summary" : "get the billing cycle report",
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/idParameter"
-              }
-            }
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "billingCycle id",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
           }
-        },
+        } ],
         "responses" : {
           "200" : {
             "description" : "report",
