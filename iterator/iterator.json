@@ -13,6 +13,23 @@
     "bearerAuth" : [ ]
   } ],
   "paths" : {
+    "/progress" : {
+      "get" : {
+        "summary" : "get the users current progress",
+        "responses" : {
+          "200" : {
+            "description" : "current user's progress",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/workItems/active" : {
       "get" : {
         "summary" : "gets the current active workItems",
@@ -24,7 +41,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/inline_response_200"
+                    "$ref" : "#/components/schemas/inline_response_200_1"
                   }
                 }
               }
@@ -316,7 +333,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_1"
+                  "$ref" : "#/components/schemas/inline_response_200_2"
                 }
               }
             }
@@ -448,7 +465,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_2"
+                  "$ref" : "#/components/schemas/inline_response_200_3"
                 }
               }
             }
@@ -1171,7 +1188,7 @@
           },
           "g" : {
             "type" : "number",
-            "description" : "effort remaining",
+            "description" : "effort goal",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1183,19 +1200,19 @@
           },
           "a" : {
             "type" : "number",
-            "description" : "delayed effort",
+            "description" : "due effort",
             "format" : "decimal",
             "nullable" : false
           },
           "ad" : {
             "type" : "number",
-            "description" : "delayed effort in the day. If negative, indicates work ahead",
+            "description" : "adjusted due effort. If negative, indicates work ahead",
             "format" : "decimal",
             "nullable" : false
           },
           "ma" : {
             "type" : "number",
-            "description" : "average effort per day, adjusted",
+            "description" : "adjusted average effort per day",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1236,7 +1253,7 @@
           },
           "ma" : {
             "type" : "number",
-            "description" : "average effort per day, adjusted",
+            "description" : "adjusted average effort per day, adjusted",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1254,13 +1271,13 @@
           },
           "a" : {
             "type" : "number",
-            "description" : "delayed effort",
+            "description" : "due effort",
             "format" : "decimal",
             "nullable" : false
           },
           "ad" : {
             "type" : "number",
-            "description" : "delayed effort in the day. If negative, indicates work ahead.",
+            "description" : "adjusted due effort. If negative, indicates work ahead.",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1366,7 +1383,7 @@
           },
           "g" : {
             "type" : "number",
-            "description" : "estimated effort",
+            "description" : "effort goal",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1378,7 +1395,7 @@
           },
           "a" : {
             "type" : "number",
-            "description" : "delayed effort",
+            "description" : "effort due",
             "format" : "decimal",
             "nullable" : false
           },
@@ -1390,7 +1407,7 @@
           },
           "ad" : {
             "type" : "number",
-            "description" : "delayed effort in the day. If negativa, indicates work ahead",
+            "description" : "adjusted average effort per day. If negativa, indicates work ahead",
             "format" : "decimal",
             "nullable" : false
           }
@@ -1439,6 +1456,26 @@
       "inline_response_200" : {
         "type" : "object",
         "properties" : {
+          "developer" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "iteration" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "billingCenters" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/billingCenterDeveloper"
+            }
+          }
+        },
+        "additionalProperties" : false
+      },
+      "inline_response_200_1" : {
+        "type" : "object",
+        "properties" : {
           "name" : {
             "type" : "string",
             "description" : "projectName",
@@ -1478,7 +1515,7 @@
           }
         }
       },
-      "inline_response_200_1" : {
+      "inline_response_200_2" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
@@ -1492,7 +1529,7 @@
           "additionalProperties" : false
         } ]
       },
-      "inline_response_200_2" : {
+      "inline_response_200_3" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
