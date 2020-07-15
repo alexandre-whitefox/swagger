@@ -230,7 +230,7 @@
     "schemas" : {
       "ProviderType" : {
         "type" : "string",
-        "enum" : [ "facebook", "google" ]
+        "enum" : [ "facebook", "google", "microsoft" ]
       },
       "PasswordKeyParameters" : {
         "required" : [ "application", "key" ],
