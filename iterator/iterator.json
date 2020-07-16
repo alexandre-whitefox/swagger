@@ -15,10 +15,27 @@
   "paths" : {
     "/progress" : {
       "get" : {
-        "summary" : "get the users current progress",
+        "summary" : "get the current progress",
         "responses" : {
           "200" : {
             "description" : "current user's progress",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/progress/team" : {
+      "get" : {
+        "summary" : "get the team current progress",
+        "responses" : {
+          "200" : {
+            "description" : "team's progress",
             "content" : {
               "application/json" : {
                 "schema" : {
