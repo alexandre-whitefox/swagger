@@ -1402,7 +1402,6 @@
         "additionalProperties" : false
       },
       "billingCenterDashboard" : {
-        "required" : [ "a", "ad", "d", "g", "id", "n", "nl" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -1425,13 +1424,13 @@
             "type" : "number",
             "description" : "effort completed (legacy)",
             "format" : "decimal",
-            "nullable" : true
+            "nullable" : false
           },
           "c" : {
             "type" : "number",
             "description" : "effort completed",
             "format" : "decimal",
-            "nullable" : true
+            "nullable" : false
           },
           "a" : {
             "type" : "number",
