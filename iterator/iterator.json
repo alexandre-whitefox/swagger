@@ -346,6 +346,32 @@
         }
       }
     },
+    "/operations/goal" : {
+      "patch" : {
+        "summary" : "defines an effort goal for the developer, for the current iteration",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "operation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
@@ -512,7 +538,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_1"
+                "$ref" : "#/components/schemas/body_2"
               }
             }
           }
@@ -1591,6 +1617,38 @@
           }
         }
       },
+      "body_1" : {
+        "required" : [ "goal" ],
+        "type" : "object",
+        "properties" : {
+          "billingCenterNickName" : {
+            "type" : "string",
+            "description" : "Ignored if billingCenterId is provided",
+            "nullable" : true
+          },
+          "billingCenterId" : {
+            "type" : "integer",
+            "description" : "If not provided, Billing Center nickname must be informed",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "developerNickName" : {
+            "type" : "string",
+            "description" : "Ignored if developerId is provided",
+            "nullable" : true
+          },
+          "developerId" : {
+            "type" : "integer",
+            "description" : "If not provided, Developer nickname must be informed",
+            "format" : "int32"
+          },
+          "goal" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        }
+      },
       "inline_response_200_4" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
@@ -1619,7 +1677,7 @@
           "additionalProperties" : false
         } ]
       },
-      "body_1" : {
+      "body_2" : {
         "required" : [ "active" ],
         "type" : "object",
         "properties" : {
