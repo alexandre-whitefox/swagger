@@ -1529,8 +1529,17 @@
             "type" : "string",
             "nullable" : false
           },
+          "billingCenters" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/billingCenterDashboard"
+            }
+          },
           "developers" : {
-            "$ref" : "#/components/schemas/inline_response_200_2_developers"
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/developer"
+            }
           }
         },
         "additionalProperties" : false
@@ -1677,27 +1686,6 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/uidN"
-            }
-          }
-        }
-      },
-      "inline_response_200_2_developers" : {
-        "type" : "object",
-        "properties" : {
-          "billingCenters" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/billingCenterDashboard"
-            }
-          },
-          "iteration" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "developers" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/developer"
             }
           }
         }
