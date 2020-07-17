@@ -1621,7 +1621,7 @@
         "required" : [ "goal" ],
         "type" : "object",
         "properties" : {
-          "billingCenterNickName" : {
+          "billingCenterNickname" : {
             "type" : "string",
             "description" : "Ignored if billingCenterId is provided",
             "nullable" : true
@@ -1632,7 +1632,7 @@
             "format" : "int32",
             "nullable" : true
           },
-          "developerNickName" : {
+          "developerNickname" : {
             "type" : "string",
             "description" : "Ignored if developerId is provided",
             "nullable" : true
