@@ -47,6 +47,23 @@
         }
       }
     },
+    "/progress/general" : {
+      "get" : {
+        "summary" : "get the general current progress",
+        "responses" : {
+          "200" : {
+            "description" : "general progress",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_2"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/workItems/active" : {
       "get" : {
         "summary" : "gets the current active workItems",
@@ -58,7 +75,7 @@
                 "schema" : {
                   "type" : "array",
                   "items" : {
-                    "$ref" : "#/components/schemas/inline_response_200_2"
+                    "$ref" : "#/components/schemas/inline_response_200_3"
                   }
                 }
               }
@@ -350,7 +367,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_3"
+                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             }
@@ -482,7 +499,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
+                  "$ref" : "#/components/schemas/inline_response_200_5"
                 }
               }
             }
@@ -1432,7 +1449,6 @@
         "additionalProperties" : false
       },
       "dashboard" : {
-        "required" : [ "billingCenters", "developers", "iteration", "lastItems", "lastUpdate", "userId" ],
         "type" : "object",
         "properties" : {
           "userId" : {
@@ -1509,6 +1525,19 @@
       "inline_response_200_2" : {
         "type" : "object",
         "properties" : {
+          "iteration" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "developers" : {
+            "$ref" : "#/components/schemas/inline_response_200_2_developers"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "inline_response_200_3" : {
+        "type" : "object",
+        "properties" : {
           "name" : {
             "type" : "string",
             "description" : "projectName",
@@ -1548,7 +1577,7 @@
           }
         }
       },
-      "inline_response_200_3" : {
+      "inline_response_200_4" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
@@ -1562,7 +1591,7 @@
           "additionalProperties" : false
         } ]
       },
-      "inline_response_200_4" : {
+      "inline_response_200_5" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/actionResult"
         }, {
@@ -1648,6 +1677,27 @@
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/uidN"
+            }
+          }
+        }
+      },
+      "inline_response_200_2_developers" : {
+        "type" : "object",
+        "properties" : {
+          "billingCenters" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/billingCenterDashboard"
+            }
+          },
+          "iteration" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "developers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/developer"
             }
           }
         }
