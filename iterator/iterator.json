@@ -1423,9 +1423,15 @@
           },
           "d" : {
             "type" : "number",
+            "description" : "effort completed (legacy)",
+            "format" : "decimal",
+            "nullable" : true
+          },
+          "c" : {
+            "type" : "number",
             "description" : "effort completed",
             "format" : "decimal",
-            "nullable" : false
+            "nullable" : true
           },
           "a" : {
             "type" : "number",
