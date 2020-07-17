@@ -346,7 +346,7 @@
         }
       }
     },
-    "/operations/goal" : {
+    "/operations/goal/developer" : {
       "patch" : {
         "summary" : "defines an effort goal for the developer, for the current iteration",
         "requestBody" : {
