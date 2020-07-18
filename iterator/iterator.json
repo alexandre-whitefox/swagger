@@ -372,6 +372,26 @@
         }
       }
     },
+    "/tasks/last" : {
+      "get" : {
+        "summary" : "get the list of the last 10 tasks executed",
+        "responses" : {
+          "200" : {
+            "description" : "workitem list",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/workItemSummary"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
