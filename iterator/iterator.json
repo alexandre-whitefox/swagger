@@ -1291,7 +1291,6 @@
         "additionalProperties" : false
       },
       "developer" : {
-        "required" : [ "a", "ad", "c", "g", "id", "ma", "me", "n" ],
         "type" : "object",
         "properties" : {
           "id" : {
