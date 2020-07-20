@@ -1402,8 +1402,7 @@
           },
           "bc" : {
             "type" : "string",
-            "description" : "billing center name",
-            "nullable" : true
+            "description" : "billing center name"
           },
           "id" : {
             "type" : "integer",
@@ -1421,6 +1420,10 @@
             "description" : "actual effort",
             "format" : "decimal",
             "nullable" : false
+          },
+          "ti" : {
+            "type" : "string",
+            "description" : "workItem type"
           },
           "c" : {
             "type" : "boolean",
