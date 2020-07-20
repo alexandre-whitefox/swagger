@@ -1442,6 +1442,12 @@
             "format" : "date-time",
             "nullable" : true
           },
+          "dl" : {
+            "type" : "string",
+            "description" : "developer last update",
+            "format" : "date-time",
+            "nullable" : true
+          },
           "tasks" : {
             "type" : "array",
             "items" : {
