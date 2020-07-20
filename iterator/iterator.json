@@ -1421,6 +1421,12 @@
             "format" : "decimal",
             "nullable" : false
           },
+          "de" : {
+            "type" : "number",
+            "description" : "developer effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
           "ti" : {
             "type" : "string",
             "description" : "workItem type"
