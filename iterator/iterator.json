@@ -389,6 +389,38 @@
         }
       }
     },
+    "/operations/task/last" : {
+      "get" : {
+        "summary" : "get data about the developer's last task",
+        "responses" : {
+          "200" : {
+            "description" : "task detail",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_5"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "delete the developer's task",
+        "responses" : {
+          "200" : {
+            "description" : "operation result",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/actionResult"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/operations/task" : {
       "get" : {
         "summary" : "get data about a task",
