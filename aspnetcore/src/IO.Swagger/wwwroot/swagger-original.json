@@ -13,6 +13,15 @@
     "/notify" : {
       "post" : {
         "summary" : "sends notification",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          }
+        },
         "responses" : {
           "200" : {
             "description" : "Ok"
@@ -21,6 +30,23 @@
       }
     }
   },
-  "components" : { },
+  "components" : {
+    "schemas" : {
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "userId" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "type" : {
+            "type" : "string",
+            "nullable" : false,
+            "enum" : [ "dashboardUpdated", "userEffortUpdated" ]
+          }
+        }
+      }
+    }
+  },
   "x-azure-api-id" : "white-fox-lana-api"
 }
