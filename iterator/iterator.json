@@ -346,6 +346,31 @@
         }
       }
     },
+    "/notifications" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "notifications activated"
+          }
+        }
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "notifications deactivated"
+          }
+        }
+      }
+    },
     "/operations/goal/developer" : {
       "patch" : {
         "summary" : "defines an effort goal for the developer, for the current iteration",
@@ -353,7 +378,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_1"
+                "$ref" : "#/components/schemas/body_2"
               }
             }
           }
@@ -587,7 +612,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_2"
+                "$ref" : "#/components/schemas/body_3"
               }
             }
           }
@@ -1680,6 +1705,15 @@
         }
       },
       "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "notificationId" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        }
+      },
+      "body_2" : {
         "required" : [ "goal" ],
         "type" : "object",
         "properties" : {
@@ -1754,7 +1788,7 @@
           "additionalProperties" : false
         } ]
       },
-      "body_2" : {
+      "body_3" : {
         "required" : [ "active" ],
         "type" : "object",
         "properties" : {
