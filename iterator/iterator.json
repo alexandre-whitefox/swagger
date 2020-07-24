@@ -1701,9 +1701,10 @@
             "type" : "string",
             "nullable" : false
           },
-          "Type" : {
+          "Types" : {
             "type" : "integer",
-            "enum" : [ 0, 1 ]
+            "description" : "Notification Type to Receive. Value is OR with current one.",
+            "enum" : [ 1, 2 ]
           }
         }
       },
