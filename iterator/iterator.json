@@ -213,6 +213,23 @@
         }
       }
     },
+    "/tasks/last" : {
+      "get" : {
+        "summary" : "get the list of the last 10 tasks executed",
+        "responses" : {
+          "200" : {
+            "description" : "workitem list",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/inline_response_200_4"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/profile/billingCenters" : {
       "get" : {
         "summary" : "get the current user billing centers and cycles",
@@ -278,6 +295,31 @@
         }
       }
     },
+    "/profile/notification" : {
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "notifications activated"
+          }
+        }
+      },
+      "delete" : {
+        "responses" : {
+          "200" : {
+            "description" : "notifications deactivated"
+          }
+        }
+      }
+    },
     "/file" : {
       "get" : {
         "summary" : "Get the file content",
@@ -314,7 +356,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body"
+                "$ref" : "#/components/schemas/body_1"
               }
             }
           }
@@ -346,31 +388,6 @@
         }
       }
     },
-    "/notifications" : {
-      "post" : {
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/body_1"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "notifications activated"
-          }
-        }
-      },
-      "delete" : {
-        "responses" : {
-          "200" : {
-            "description" : "notifications deactivated"
-          }
-        }
-      }
-    },
     "/operations/goal/developer" : {
       "patch" : {
         "summary" : "defines an effort goal for the developer, for the current iteration",
@@ -390,23 +407,6 @@
               "application/json" : {
                 "schema" : {
                   "$ref" : "#/components/schemas/actionResult"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/tasks/last" : {
-      "get" : {
-        "summary" : "get the list of the last 10 tasks executed",
-        "responses" : {
-          "200" : {
-            "description" : "workitem list",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_4"
                 }
               }
             }
@@ -1679,7 +1679,35 @@
         },
         "additionalProperties" : false
       },
+      "inline_response_200_4" : {
+        "type" : "object",
+        "properties" : {
+          "developer" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "lastItems" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/workItemSummary"
+            }
+          }
+        }
+      },
       "body" : {
+        "type" : "object",
+        "properties" : {
+          "Key" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "Type" : {
+            "type" : "integer",
+            "enum" : [ 0, 1 ]
+          }
+        }
+      },
+      "body_1" : {
         "type" : "object",
         "properties" : {
           "file" : {
@@ -1701,15 +1729,6 @@
             "type" : "string",
             "nullable" : false,
             "enum" : [ "workitem" ]
-          }
-        }
-      },
-      "body_1" : {
-        "type" : "object",
-        "properties" : {
-          "notificationId" : {
-            "type" : "string",
-            "nullable" : false
           }
         }
       },
@@ -1742,21 +1761,6 @@
             "type" : "number",
             "format" : "decimal",
             "nullable" : false
-          }
-        }
-      },
-      "inline_response_200_4" : {
-        "type" : "object",
-        "properties" : {
-          "developer" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "lastItems" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/workItemSummary"
-            }
           }
         }
       },
