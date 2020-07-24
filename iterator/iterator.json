@@ -295,7 +295,7 @@
         }
       }
     },
-    "/profile/notification" : {
+    "/profile/notifications" : {
       "post" : {
         "requestBody" : {
           "content" : {
