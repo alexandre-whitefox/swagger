@@ -301,7 +301,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body"
+                "$ref" : "#/components/schemas/notificationsParameters"
               }
             }
           }
@@ -356,7 +356,7 @@
           "content" : {
             "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_1"
+                "$ref" : "#/components/schemas/body"
               }
             }
           }
@@ -395,7 +395,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_2"
+                "$ref" : "#/components/schemas/goalParameters"
               }
             }
           }
@@ -612,7 +612,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body_3"
+                "$ref" : "#/components/schemas/body_1"
               }
             }
           }
@@ -826,6 +826,52 @@
             "type" : "number",
             "format" : "decimal",
             "nullable" : true
+          }
+        }
+      },
+      "notificationsParameters" : {
+        "type" : "object",
+        "properties" : {
+          "Key" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "Types" : {
+            "type" : "integer",
+            "description" : "Notification Type to Receive. Value is OR with current one.",
+            "enum" : [ 1, 2 ]
+          }
+        }
+      },
+      "goalParameters" : {
+        "required" : [ "goal" ],
+        "type" : "object",
+        "properties" : {
+          "billingCenterNickname" : {
+            "type" : "string",
+            "description" : "Ignored if billingCenterId is provided",
+            "nullable" : true
+          },
+          "billingCenterId" : {
+            "type" : "integer",
+            "description" : "If not provided, Billing Center nickname must be informed",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "developerNickname" : {
+            "type" : "string",
+            "description" : "Ignored if developerId is provided",
+            "nullable" : true
+          },
+          "developerId" : {
+            "type" : "integer",
+            "description" : "If not provided, Developer nickname must be informed",
+            "format" : "int32"
+          },
+          "goal" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
           }
         }
       },
@@ -1697,20 +1743,6 @@
       "body" : {
         "type" : "object",
         "properties" : {
-          "Key" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "Types" : {
-            "type" : "integer",
-            "description" : "Notification Type to Receive. Value is OR with current one.",
-            "enum" : [ 1, 2 ]
-          }
-        }
-      },
-      "body_1" : {
-        "type" : "object",
-        "properties" : {
           "file" : {
             "type" : "string",
             "format" : "binary",
@@ -1730,38 +1762,6 @@
             "type" : "string",
             "nullable" : false,
             "enum" : [ "workitem" ]
-          }
-        }
-      },
-      "body_2" : {
-        "required" : [ "goal" ],
-        "type" : "object",
-        "properties" : {
-          "billingCenterNickname" : {
-            "type" : "string",
-            "description" : "Ignored if billingCenterId is provided",
-            "nullable" : true
-          },
-          "billingCenterId" : {
-            "type" : "integer",
-            "description" : "If not provided, Billing Center nickname must be informed",
-            "format" : "int32",
-            "nullable" : true
-          },
-          "developerNickname" : {
-            "type" : "string",
-            "description" : "Ignored if developerId is provided",
-            "nullable" : true
-          },
-          "developerId" : {
-            "type" : "integer",
-            "description" : "If not provided, Developer nickname must be informed",
-            "format" : "int32"
-          },
-          "goal" : {
-            "type" : "number",
-            "format" : "decimal",
-            "nullable" : false
           }
         }
       },
@@ -1793,7 +1793,7 @@
           "additionalProperties" : false
         } ]
       },
-      "body_3" : {
+      "body_1" : {
         "required" : [ "active" ],
         "type" : "object",
         "properties" : {
