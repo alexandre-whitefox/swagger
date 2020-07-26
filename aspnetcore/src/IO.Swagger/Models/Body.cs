@@ -33,6 +33,12 @@ namespace IO.Swagger.Models
         public string UserId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [DataMember(Name="Id")]
+        public int? Id { get; set; }
+
+        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
@@ -64,6 +70,7 @@ namespace IO.Swagger.Models
             var sb = new StringBuilder();
             sb.Append("class Body {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -107,6 +114,11 @@ namespace IO.Swagger.Models
                     UserId.Equals(other.UserId)
                 ) && 
                 (
+                    Id == other.Id ||
+                    Id != null &&
+                    Id.Equals(other.Id)
+                ) && 
+                (
                     Type == other.Type ||
                     Type != null &&
                     Type.Equals(other.Type)
@@ -125,6 +137,8 @@ namespace IO.Swagger.Models
                 // Suitable nullity checks etc, of course :)
                     if (UserId != null)
                     hashCode = hashCode * 59 + UserId.GetHashCode();
+                    if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
                     if (Type != null)
                     hashCode = hashCode * 59 + Type.GetHashCode();
                 return hashCode;
