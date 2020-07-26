@@ -35,8 +35,14 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="Id")]
+        [DataMember(Name="id")]
         public int? Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Error
+        /// </summary>
+        [DataMember(Name="error")]
+        public string Error { get; set; }
 
         /// <summary>
         /// Gets or Sets Type
@@ -71,6 +77,7 @@ namespace IO.Swagger.Models
             sb.Append("class Body {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -119,6 +126,11 @@ namespace IO.Swagger.Models
                     Id.Equals(other.Id)
                 ) && 
                 (
+                    Error == other.Error ||
+                    Error != null &&
+                    Error.Equals(other.Error)
+                ) && 
+                (
                     Type == other.Type ||
                     Type != null &&
                     Type.Equals(other.Type)
@@ -139,6 +151,8 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + UserId.GetHashCode();
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (Error != null)
+                    hashCode = hashCode * 59 + Error.GetHashCode();
                     if (Type != null)
                     hashCode = hashCode * 59 + Type.GetHashCode();
                 return hashCode;

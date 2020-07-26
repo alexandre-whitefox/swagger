@@ -39,9 +39,13 @@
             "type" : "string",
             "nullable" : false
           },
-          "Id" : {
+          "id" : {
             "type" : "integer",
             "format" : "int32",
+            "nullable" : true
+          },
+          "error" : {
+            "type" : "string",
             "nullable" : true
           },
           "type" : {
