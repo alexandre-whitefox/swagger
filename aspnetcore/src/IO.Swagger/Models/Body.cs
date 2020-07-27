@@ -39,6 +39,60 @@ namespace IO.Swagger.Models
         public int? Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets Entity
+        /// </summary>
+        [DataMember(Name="entity")]
+        public string Entity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Action
+        /// </summary>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public enum ActionEnum
+        {
+            /// <summary>
+            /// Enum InsertedEnum for inserted
+            /// </summary>
+            [EnumMember(Value = "inserted")]
+            InsertedEnum = 0,
+            /// <summary>
+            /// Enum UpdatedEnum for updated
+            /// </summary>
+            [EnumMember(Value = "updated")]
+            UpdatedEnum = 1,
+            /// <summary>
+            /// Enum DeletedEnum for deleted
+            /// </summary>
+            [EnumMember(Value = "deleted")]
+            DeletedEnum = 2,
+            /// <summary>
+            /// Enum ActivatedEnum for activated
+            /// </summary>
+            [EnumMember(Value = "activated")]
+            ActivatedEnum = 3,
+            /// <summary>
+            /// Enum DeativatedEnum for deativated
+            /// </summary>
+            [EnumMember(Value = "deativated")]
+            DeativatedEnum = 4,
+            /// <summary>
+            /// Enum ClosedEnum for closed
+            /// </summary>
+            [EnumMember(Value = "closed")]
+            ClosedEnum = 5,
+            /// <summary>
+            /// Enum OpenedEnum for opened
+            /// </summary>
+            [EnumMember(Value = "opened")]
+            OpenedEnum = 6        }
+
+        /// <summary>
+        /// Gets or Sets Action
+        /// </summary>
+        [DataMember(Name="action")]
+        public ActionEnum? Action { get; set; }
+
+        /// <summary>
         /// Gets or Sets Error
         /// </summary>
         [DataMember(Name="error")]
@@ -82,6 +136,8 @@ namespace IO.Swagger.Models
             sb.Append("class Body {\n");
             sb.Append("  UserId: ").Append(UserId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Entity: ").Append(Entity).Append("\n");
+            sb.Append("  Action: ").Append(Action).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -131,6 +187,16 @@ namespace IO.Swagger.Models
                     Id.Equals(other.Id)
                 ) && 
                 (
+                    Entity == other.Entity ||
+                    Entity != null &&
+                    Entity.Equals(other.Entity)
+                ) && 
+                (
+                    Action == other.Action ||
+                    Action != null &&
+                    Action.Equals(other.Action)
+                ) && 
+                (
                     Error == other.Error ||
                     Error != null &&
                     Error.Equals(other.Error)
@@ -156,6 +222,10 @@ namespace IO.Swagger.Models
                     hashCode = hashCode * 59 + UserId.GetHashCode();
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
+                    if (Entity != null)
+                    hashCode = hashCode * 59 + Entity.GetHashCode();
+                    if (Action != null)
+                    hashCode = hashCode * 59 + Action.GetHashCode();
                     if (Error != null)
                     hashCode = hashCode * 59 + Error.GetHashCode();
                     if (Type != null)
