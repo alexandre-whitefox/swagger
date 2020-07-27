@@ -32,10 +32,14 @@
   },
   "components" : {
     "schemas" : {
+      "ActionType" : {
+        "type" : "string",
+        "enum" : [ "inserted", "updated", "deleted", "activated", "deativated", "closed", "opened" ]
+      },
       "body" : {
         "type" : "object",
         "properties" : {
-          "userId" : {
+          "userKey" : {
             "type" : "string",
             "nullable" : false
           },
@@ -49,9 +53,7 @@
             "nullable" : true
           },
           "action" : {
-            "type" : "string",
-            "nullable" : true,
-            "enum" : [ "inserted", "updated", "deleted", "activated", "deativated", "closed", "opened" ]
+            "$ref" : "#/components/schemas/ActionType"
           },
           "error" : {
             "type" : "string",

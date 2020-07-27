@@ -27,10 +27,10 @@ namespace IO.Swagger.Models
     public partial class Body : IEquatable<Body>
     { 
         /// <summary>
-        /// Gets or Sets UserId
+        /// Gets or Sets UserKey
         /// </summary>
-        [DataMember(Name="userId")]
-        public string UserId { get; set; }
+        [DataMember(Name="userKey")]
+        public string UserKey { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -47,50 +47,8 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Gets or Sets Action
         /// </summary>
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public enum ActionEnum
-        {
-            /// <summary>
-            /// Enum InsertedEnum for inserted
-            /// </summary>
-            [EnumMember(Value = "inserted")]
-            InsertedEnum = 0,
-            /// <summary>
-            /// Enum UpdatedEnum for updated
-            /// </summary>
-            [EnumMember(Value = "updated")]
-            UpdatedEnum = 1,
-            /// <summary>
-            /// Enum DeletedEnum for deleted
-            /// </summary>
-            [EnumMember(Value = "deleted")]
-            DeletedEnum = 2,
-            /// <summary>
-            /// Enum ActivatedEnum for activated
-            /// </summary>
-            [EnumMember(Value = "activated")]
-            ActivatedEnum = 3,
-            /// <summary>
-            /// Enum DeativatedEnum for deativated
-            /// </summary>
-            [EnumMember(Value = "deativated")]
-            DeativatedEnum = 4,
-            /// <summary>
-            /// Enum ClosedEnum for closed
-            /// </summary>
-            [EnumMember(Value = "closed")]
-            ClosedEnum = 5,
-            /// <summary>
-            /// Enum OpenedEnum for opened
-            /// </summary>
-            [EnumMember(Value = "opened")]
-            OpenedEnum = 6        }
-
-        /// <summary>
-        /// Gets or Sets Action
-        /// </summary>
         [DataMember(Name="action")]
-        public ActionEnum? Action { get; set; }
+        public ActionType? Action { get; set; }
 
         /// <summary>
         /// Gets or Sets Error
@@ -134,7 +92,7 @@ namespace IO.Swagger.Models
         {
             var sb = new StringBuilder();
             sb.Append("class Body {\n");
-            sb.Append("  UserId: ").Append(UserId).Append("\n");
+            sb.Append("  UserKey: ").Append(UserKey).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Entity: ").Append(Entity).Append("\n");
             sb.Append("  Action: ").Append(Action).Append("\n");
@@ -177,9 +135,9 @@ namespace IO.Swagger.Models
 
             return 
                 (
-                    UserId == other.UserId ||
-                    UserId != null &&
-                    UserId.Equals(other.UserId)
+                    UserKey == other.UserKey ||
+                    UserKey != null &&
+                    UserKey.Equals(other.UserKey)
                 ) && 
                 (
                     Id == other.Id ||
@@ -218,8 +176,8 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (UserId != null)
-                    hashCode = hashCode * 59 + UserId.GetHashCode();
+                    if (UserKey != null)
+                    hashCode = hashCode * 59 + UserKey.GetHashCode();
                     if (Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
                     if (Entity != null)
