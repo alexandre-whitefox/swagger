@@ -51,7 +51,7 @@
           "type" : {
             "type" : "string",
             "nullable" : false,
-            "enum" : [ "dashboardUpdated", "userEffortUpdated" ]
+            "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted" ]
           }
         }
       }

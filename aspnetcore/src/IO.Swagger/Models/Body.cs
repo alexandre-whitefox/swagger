@@ -59,7 +59,12 @@ namespace IO.Swagger.Models
             /// Enum UserEffortUpdatedEnum for userEffortUpdated
             /// </summary>
             [EnumMember(Value = "userEffortUpdated")]
-            UserEffortUpdatedEnum = 1        }
+            UserEffortUpdatedEnum = 1,
+            /// <summary>
+            /// Enum TransactionExecutedEnum for transactionExecuted
+            /// </summary>
+            [EnumMember(Value = "transactionExecuted")]
+            TransactionExecutedEnum = 2        }
 
         /// <summary>
         /// Gets or Sets Type
