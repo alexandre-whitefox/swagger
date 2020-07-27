@@ -32,6 +32,11 @@
   },
   "components" : {
     "schemas" : {
+      "NotificationType" : {
+        "type" : "string",
+        "nullable" : false,
+        "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted" ]
+      },
       "ActionType" : {
         "type" : "string",
         "nullable" : true,
@@ -61,9 +66,7 @@
             "nullable" : true
           },
           "type" : {
-            "type" : "string",
-            "nullable" : false,
-            "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted" ]
+            "$ref" : "#/components/schemas/NotificationType"
           }
         }
       }

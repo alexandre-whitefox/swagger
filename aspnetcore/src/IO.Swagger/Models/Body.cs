@@ -59,30 +59,8 @@ namespace IO.Swagger.Models
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum DashboardUpdatedEnum for dashboardUpdated
-            /// </summary>
-            [EnumMember(Value = "dashboardUpdated")]
-            DashboardUpdatedEnum = 0,
-            /// <summary>
-            /// Enum UserEffortUpdatedEnum for userEffortUpdated
-            /// </summary>
-            [EnumMember(Value = "userEffortUpdated")]
-            UserEffortUpdatedEnum = 1,
-            /// <summary>
-            /// Enum TransactionExecutedEnum for transactionExecuted
-            /// </summary>
-            [EnumMember(Value = "transactionExecuted")]
-            TransactionExecutedEnum = 2        }
-
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
         [DataMember(Name="type")]
-        public TypeEnum? Type { get; set; }
+        public NotificationType? Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
