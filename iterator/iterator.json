@@ -126,10 +126,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/inline_response_200_3"
-                  }
+                  "$ref" : "#/components/schemas/inline_response_200_3"
                 }
               }
             }
@@ -1505,6 +1502,17 @@
           },
           "n" : {
             "type" : "string",
+            "description" : "title",
+            "nullable" : false
+          },
+          "c" : {
+            "type" : "string",
+            "description" : "company",
+            "nullable" : false
+          },
+          "t" : {
+            "type" : "string",
+            "description" : "type",
             "nullable" : false
           },
           "e" : {
@@ -1641,7 +1649,7 @@
         "additionalProperties" : false
       },
       "pagination" : {
-        "required" : [ "items", "page", "pageSize" ],
+        "required" : [ "items", "page", "pageSize", "pages" ],
         "type" : "object",
         "properties" : {
           "page" : {
@@ -1650,6 +1658,11 @@
             "nullable" : false
           },
           "pageSize" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "pages" : {
             "type" : "integer",
             "format" : "int32",
             "nullable" : false
