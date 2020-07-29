@@ -599,7 +599,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/inline_response_200_6"
+                  "$ref" : "#/components/schemas/workItemDetail"
                 }
               }
             }
@@ -1774,20 +1774,6 @@
           "properties" : {
             "data" : {
               "$ref" : "#/components/schemas/taskDetail"
-            }
-          },
-          "additionalProperties" : false
-        } ]
-      },
-      "inline_response_200_6" : {
-        "allOf" : [ {
-          "$ref" : "#/components/schemas/actionResult"
-        }, {
-          "required" : [ "data" ],
-          "type" : "object",
-          "properties" : {
-            "data" : {
-              "$ref" : "#/components/schemas/workItemDetail"
             }
           },
           "additionalProperties" : false
