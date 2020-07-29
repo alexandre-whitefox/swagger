@@ -86,8 +86,7 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string",
-            "nullable" : true
+            "type" : "string"
           }
         }, {
           "name" : "type",
@@ -96,8 +95,29 @@
           "style" : "form",
           "explode" : true,
           "schema" : {
-            "type" : "string",
-            "nullable" : true
+            "type" : "string"
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          }
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
           }
         } ],
         "responses" : {
@@ -1618,6 +1638,28 @@
         },
         "additionalProperties" : false
       },
+      "pagination" : {
+        "required" : [ "items", "page", "pageSize" ],
+        "type" : "object",
+        "properties" : {
+          "page" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "pageSize" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          },
+          "items" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false
+      },
       "dashboard" : {
         "type" : "object",
         "properties" : {
@@ -1719,8 +1761,16 @@
         "properties" : {
           "name" : {
             "type" : "string",
-            "description" : "projectName",
+            "description" : "company name",
             "nullable" : false
+          },
+          "type" : {
+            "type" : "string",
+            "description" : "workitemType",
+            "nullable" : true
+          },
+          "pagination" : {
+            "$ref" : "#/components/schemas/pagination"
           },
           "workItems" : {
             "type" : "array",
