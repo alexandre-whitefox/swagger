@@ -1774,16 +1774,6 @@
       "inline_response_200_3" : {
         "type" : "object",
         "properties" : {
-          "name" : {
-            "type" : "string",
-            "description" : "company name",
-            "nullable" : false
-          },
-          "type" : {
-            "type" : "string",
-            "description" : "workitemType",
-            "nullable" : true
-          },
           "pagination" : {
             "$ref" : "#/components/schemas/pagination"
           },
