@@ -1491,6 +1491,11 @@
             "type" : "number",
             "format" : "decimal",
             "nullable" : false
+          },
+          "g" : {
+            "type" : "number",
+            "format" : "decimal",
+            "nullable" : false
           }
         },
         "additionalProperties" : false
