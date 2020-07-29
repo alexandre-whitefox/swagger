@@ -64,9 +64,42 @@
         }
       }
     },
-    "/workItems/active" : {
+    "/workItems/{state}" : {
       "get" : {
-        "summary" : "gets the current active workItems",
+        "summary" : "gets workItems list",
+        "parameters" : [ {
+          "name" : "state",
+          "in" : "path",
+          "description" : "state of the workitem",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true,
+            "enum" : [ "active", "backlog", "closed" ]
+          }
+        }, {
+          "name" : "company",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }, {
+          "name" : "type",
+          "in" : "query",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "list of projects/workItems",
@@ -76,38 +109,6 @@
                   "type" : "array",
                   "items" : {
                     "$ref" : "#/components/schemas/inline_response_200_3"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/workItems/backlog" : {
-      "get" : {
-        "summary" : "gets the current backlog workItems",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "query",
-          "description" : "project id",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "list of workItems",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/workItemDigest"
                   }
                 }
               }
