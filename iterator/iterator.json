@@ -1509,11 +1509,13 @@
           },
           "e" : {
             "type" : "number",
+            "description" : "estimated effort",
             "format" : "decimal",
             "nullable" : false
           },
-          "g" : {
+          "a" : {
             "type" : "number",
+            "description" : "actual effort",
             "format" : "decimal",
             "nullable" : false
           }
