@@ -1676,6 +1676,7 @@
         "properties" : {
           "page" : {
             "type" : "integer",
+            "description" : "1-based",
             "format" : "int32",
             "nullable" : false
           },
