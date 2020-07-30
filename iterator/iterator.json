@@ -1274,7 +1274,7 @@
             "description" : "company",
             "nullable" : false
           },
-          "worktiem" : {
+          "ws" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/workitemDigest"
