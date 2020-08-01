@@ -250,40 +250,17 @@
     },
     "/profile/billingCenters" : {
       "get" : {
-        "summary" : "get the current user billing centers and cycles",
-        "parameters" : [ {
-          "name" : "billingOnly",
-          "in" : "query",
-          "description" : "for billing information",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "boolean",
-            "nullable" : false
-          }
-        }, {
-          "name" : "backlogOnly",
-          "in" : "query",
-          "description" : "for backlog information",
-          "required" : true,
-          "style" : "form",
-          "explode" : true,
-          "schema" : {
-            "type" : "boolean",
-            "nullable" : false
-          }
-        } ],
+        "summary" : "get the current user billingCenters",
         "responses" : {
           "200" : {
-            "description" : "list of billing centers/cycles",
+            "description" : "list of billingCenters",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "type" : "array",
                   "additionalProperties" : false,
                   "items" : {
-                    "$ref" : "#/components/schemas/billingCenter"
+                    "$ref" : "#/components/schemas/idN"
                   }
                 }
               }
@@ -1797,6 +1774,15 @@
       "inline_response_200_3" : {
         "type" : "object",
         "properties" : {
+          "state" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "company" : {
+            "type" : "string"
+          },
           "pagination" : {
             "$ref" : "#/components/schemas/pagination"
           },
