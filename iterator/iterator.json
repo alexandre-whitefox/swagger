@@ -250,17 +250,40 @@
     },
     "/profile/billingCenters" : {
       "get" : {
-        "summary" : "get the current user billingCenters",
+        "summary" : "get the current user billing centers and cycles",
+        "parameters" : [ {
+          "name" : "billingOnly",
+          "in" : "query",
+          "description" : "for billing information",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : false
+          }
+        }, {
+          "name" : "backlogOnly",
+          "in" : "query",
+          "description" : "for backlog information",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean",
+            "nullable" : false
+          }
+        } ],
         "responses" : {
           "200" : {
-            "description" : "list of billingCenters",
+            "description" : "list of billing centers/cycles",
             "content" : {
               "application/json" : {
                 "schema" : {
                   "type" : "array",
                   "additionalProperties" : false,
                   "items" : {
-                    "$ref" : "#/components/schemas/idN"
+                    "$ref" : "#/components/schemas/billingCenter"
                   }
                 }
               }
