@@ -40,5 +40,10 @@ namespace IO.Swagger.Models
             /// Enum TransactionExecutedEnum for transactionExecuted
             /// </summary>
             [EnumMember(Value = "transactionExecuted")]
-            TransactionExecutedEnum = 2        }
+            TransactionExecutedEnum = 2,
+            /// <summary>
+            /// Enum TransactionErrorEnum for transactionError
+            /// </summary>
+            [EnumMember(Value = "transactionError")]
+            TransactionErrorEnum = 3        }
 }

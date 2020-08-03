@@ -35,7 +35,7 @@
       "NotificationType" : {
         "type" : "string",
         "nullable" : false,
-        "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted" ]
+        "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted", "transactionError" ]
       },
       "ActionType" : {
         "type" : "string",
