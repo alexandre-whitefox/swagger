@@ -1882,12 +1882,12 @@
             "type" : "string",
             "nullable" : false
           },
-          "mes" : {
+          "month" : {
             "type" : "integer",
             "format" : "int32",
             "nullable" : false
           },
-          "ano" : {
+          "year" : {
             "type" : "integer",
             "format" : "int32",
             "nullable" : false
