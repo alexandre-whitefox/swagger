@@ -212,7 +212,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/billingCycleReport"
+                  "$ref" : "#/components/schemas/projectDigestReport"
                 }
               }
             }
@@ -1310,6 +1310,27 @@
           }
         },
         "additionalProperties" : false
+      },
+      "projectDigestReport" : {
+        "type" : "object",
+        "properties" : {
+          "t" : {
+            "type" : "number",
+            "description" : "total effort",
+            "format" : "decimal",
+            "nullable" : false
+          },
+          "p" : {
+            "type" : "number",
+            "description" : "percent of total effort",
+            "format" : "decimal",
+            "nullable" : false
+          }
+        },
+        "additionalProperties" : false,
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/projectDigest"
+        } ]
       },
       "projectReport" : {
         "required" : [ "id", "n", "t", "types" ],
