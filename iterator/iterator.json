@@ -212,7 +212,10 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/billingCenterTotal"
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/projectTotal"
+                  }
                 }
               }
             }
@@ -1311,7 +1314,7 @@
         },
         "additionalProperties" : false
       },
-      "billingCenterTotal" : {
+      "projectTotal" : {
         "type" : "object",
         "properties" : {
           "id" : {
