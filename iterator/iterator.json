@@ -208,7 +208,7 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "report for total effort per billing center in the last cycle",
+            "description" : "report for total effort per project in the last cycle",
             "content" : {
               "application/json" : {
                 "schema" : {
