@@ -1323,10 +1323,6 @@
             "type" : "string",
             "nullable" : false
           },
-          "c" : {
-            "type" : "string",
-            "nullable" : false
-          },
           "t" : {
             "type" : "number",
             "description" : "total effort",
