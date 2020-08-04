@@ -192,6 +192,34 @@
         }
       }
     },
+    "/billingCycles/last" : {
+      "get" : {
+        "summary" : "get the last billing cycle report",
+        "parameters" : [ {
+          "name" : "from",
+          "in" : "query",
+          "description" : "billingCenter or developer nickname",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "report",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/billingCycleReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users" : {
       "get" : {
         "summary" : "returns a list of all users",
