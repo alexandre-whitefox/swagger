@@ -1195,6 +1195,10 @@
             "type" : "integer",
             "format" : "int32",
             "nullable" : true
+          },
+          "externalId" : {
+            "type" : "integer",
+            "nullable" : true
           }
         },
         "additionalProperties" : false
