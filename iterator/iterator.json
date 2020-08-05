@@ -2020,6 +2020,10 @@
             "format" : "date-time",
             "nullable" : true
           },
+          "externalId" : {
+            "type" : "integer",
+            "nullable" : true
+          },
           "tasks" : {
             "type" : "array",
             "items" : {
