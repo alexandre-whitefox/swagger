@@ -1973,6 +1973,19 @@
           "$ref" : "#/components/schemas/workItemParameters"
         } ]
       },
+      "workItemDetail_instance_externalLink" : {
+        "type" : "object",
+        "properties" : {
+          "label" : {
+            "type" : "string",
+            "nullable" : false
+          },
+          "link" : {
+            "type" : "string",
+            "nullable" : false
+          }
+        }
+      },
       "workItemDetail_instance" : {
         "required" : [ "id", "projectId", "projectName", "title", "workItemTypeId" ],
         "type" : "object",
@@ -2023,6 +2036,9 @@
           "externalId" : {
             "type" : "integer",
             "nullable" : true
+          },
+          "externalLink" : {
+            "$ref" : "#/components/schemas/workItemDetail_instance_externalLink"
           },
           "tasks" : {
             "type" : "array",
