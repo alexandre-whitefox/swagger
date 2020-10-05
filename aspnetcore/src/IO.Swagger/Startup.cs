@@ -1,7 +1,7 @@
 /*
  * Onyx Domain
  *
- * APIs for domain actions for Onyx and FundControl
+ * Onyx APIs for domain actionsl
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -85,6 +85,8 @@ namespace IO.Swagger
                     });
                     c.CustomSchemaIds(type => type.FullName);
                     c.IncludeXmlComments($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}{_hostingEnv.ApplicationName}.xml");
+                    // Sets the basePath property in the Swagger document generated
+                    c.DocumentFilter<BasePathFilter>("/OnyxEM/domain/1.0.0");
 
                     // Include DataAnnotation attributes on Controller Action parameters as Swagger validation rules (e.g required, pattern, ..)
                     // Use [ValidateModelState] on Actions to actually validate it in C# as well!

@@ -2,100 +2,16 @@
   "openapi" : "3.0.0",
   "info" : {
     "title" : "Onyx Domain",
-    "description" : "APIs for domain actions for Onyx and FundControl",
+    "description" : "Onyx APIs for domain actionsl",
     "version" : "1.0.0"
   },
   "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/OnyxEM/domain/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
+  }, {
     "url" : "http://onyxdomainapi.azurewebsites.net"
   } ],
-  "paths" : {
-    "/email" : {
-      "post" : {
-        "requestBody" : {
-          "content" : {
-            "application/json" : {
-              "schema" : {
-                "$ref" : "#/components/schemas/emailParameters"
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "notifications activated"
-          }
-        }
-      }
-    }
-  },
-  "components" : {
-    "schemas" : {
-      "emailAddress" : {
-        "required" : [ "email", "name" ],
-        "type" : "object",
-        "properties" : {
-          "name" : {
-            "type" : "string",
-            "nullable" : false
-          },
-          "email" : {
-            "type" : "string",
-            "nullable" : false
-          }
-        },
-        "additionalProperties" : false
-      },
-      "emailParameters" : {
-        "type" : "object",
-        "properties" : {
-          "logId" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "to" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/emailAddress"
-            }
-          },
-          "displayFrom" : {
-            "type" : "string"
-          },
-          "emailFrom" : {
-            "type" : "string"
-          },
-          "subject" : {
-            "type" : "string"
-          },
-          "htmlContent" : {
-            "type" : "string"
-          },
-          "additionalDescription" : {
-            "type" : "string"
-          },
-          "definitionId" : {
-            "type" : "integer",
-            "nullable" : false
-          },
-          "attachmentName" : {
-            "type" : "string"
-          },
-          "xstlTemplates" : {
-            "type" : "boolean",
-            "nullable" : false
-          },
-          "xmlData" : {
-            "type" : "string"
-          },
-          "processId" : {
-            "type" : "string",
-            "format" : "guid",
-            "nullable" : true
-          }
-        },
-        "additionalProperties" : false
-      }
-    }
-  },
-  "x-azure-api-id" : "integracoes-api"
+  "paths" : { },
+  "components" : { },
+  "x-azure-api-id" : "domain-api"
 }
