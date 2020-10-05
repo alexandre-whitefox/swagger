@@ -1,7 +1,7 @@
 /*
- * Integrações Onyx
+ * Onyx Domain
  *
- * APIs de integrações Onyx e FundControl
+ * APIs for domain actions for Onyx and FundControl
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -33,7 +33,7 @@ namespace IO.Swagger.Controllers
         /// <param name="body"></param>
         /// <response code="200">notifications activated</response>
         [HttpPost]
-        [Route("/OnyxEM/integracoes/1.0.0/email")]
+        [Route("/email")]
         [ValidateModelState]
         [SwaggerOperation("EmailPost")]
         public virtual IActionResult EmailPost([FromBody]EmailParameters body)

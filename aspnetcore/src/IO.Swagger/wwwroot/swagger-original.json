@@ -1,13 +1,12 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "Integrações Onyx",
-    "description" : "APIs de integrações Onyx e FundControl",
+    "title" : "Onyx Domain",
+    "description" : "APIs for domain actions for Onyx and FundControl",
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://virtserver.swaggerhub.com/OnyxEM/integracoes/1.0.0",
-    "description" : "SwaggerHub API Auto Mocking"
+    "url" : "http://onyxdomainapi.azurewebsites.net"
   } ],
   "paths" : {
     "/email" : {
