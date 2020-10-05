@@ -1,7 +1,7 @@
 /*
- * White Fox Lana Api
+ * Integrações Onyx
  *
- * Lana Apis
+ * APIs de integrações Onyx e FundControl
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -28,15 +28,15 @@ namespace IO.Swagger.Controllers
     public class DefaultApiController : ControllerBase
     { 
         /// <summary>
-        /// sends notification
+        /// 
         /// </summary>
         /// <param name="body"></param>
-        /// <response code="200">Ok</response>
+        /// <response code="200">notifications activated</response>
         [HttpPost]
-        [Route("/api/notify")]
+        [Route("/OnyxEM/integracoes/1.0.0/email")]
         [ValidateModelState]
-        [SwaggerOperation("NotifyPost")]
-        public virtual IActionResult NotifyPost([FromBody]Body body)
+        [SwaggerOperation("EmailPost")]
+        public virtual IActionResult EmailPost([FromBody]EmailParameters body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);

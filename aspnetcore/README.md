@@ -1,6 +1,6 @@
 # IO.Swagger - ASP.NET Core 2.0 Server
 
-Lana Apis
+APIs de integrações Onyx e FundControl
 
 ## Run
 

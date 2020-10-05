@@ -1,7 +1,7 @@
 /*
- * White Fox Lana Api
+ * Integrações Onyx
  *
- * Lana Apis
+ * APIs de integrações Onyx e FundControl
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -73,8 +73,8 @@ namespace IO.Swagger
                     c.SwaggerDoc("1.0.0", new OpenApiInfo
                     {
                         Version = "1.0.0",
-                        Title = "White Fox Lana Api",
-                        Description = "White Fox Lana Api (ASP.NET Core 3.0)",
+                        Title = "Integrações Onyx",
+                        Description = "Integrações Onyx (ASP.NET Core 3.0)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -86,7 +86,7 @@ namespace IO.Swagger
                     c.CustomSchemaIds(type => type.FullName);
                     c.IncludeXmlComments($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}{_hostingEnv.ApplicationName}.xml");
                     // Sets the basePath property in the Swagger document generated
-                    c.DocumentFilter<BasePathFilter>("/api");
+                    c.DocumentFilter<BasePathFilter>("/OnyxEM/integracoes/1.0.0");
 
                     // Include DataAnnotation attributes on Controller Action parameters as Swagger validation rules (e.g required, pattern, ..)
                     // Use [ValidateModelState] on Actions to actually validate it in C# as well!
@@ -113,10 +113,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "White Fox Lana Api");
+                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Integrações Onyx");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "White Fox Lana Api Original");
+                // c.SwaggerEndpoint("/swagger-original.json", "Integrações Onyx Original");
             });
 
             //TODO: Use Https Redirection

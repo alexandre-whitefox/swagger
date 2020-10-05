@@ -1,30 +1,29 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "title" : "White Fox Lana Api",
-    "description" : "Lana Apis",
+    "title" : "Integrações Onyx",
+    "description" : "APIs de integrações Onyx e FundControl",
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "https://lanaservice.azurewebsites.net/api",
-    "description" : "White Fox Lana API"
+    "url" : "https://virtserver.swaggerhub.com/OnyxEM/integracoes/1.0.0",
+    "description" : "SwaggerHub API Auto Mocking"
   } ],
   "paths" : {
-    "/notify" : {
+    "/email" : {
       "post" : {
-        "summary" : "sends notification",
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/body"
+                "$ref" : "#/components/schemas/emailParameters"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "Ok"
+            "description" : "notifications activated"
           }
         }
       }
@@ -32,45 +31,71 @@
   },
   "components" : {
     "schemas" : {
-      "NotificationType" : {
-        "type" : "string",
-        "nullable" : false,
-        "enum" : [ "dashboardUpdated", "userEffortUpdated", "transactionExecuted", "transactionError" ]
-      },
-      "ActionType" : {
-        "type" : "string",
-        "nullable" : true,
-        "enum" : [ "inserted", "updated", "deleted", "activated", "deativated", "closed", "opened" ]
-      },
-      "body" : {
+      "emailAddress" : {
+        "required" : [ "email", "name" ],
         "type" : "object",
         "properties" : {
-          "userKey" : {
+          "name" : {
             "type" : "string",
             "nullable" : false
           },
-          "id" : {
-            "type" : "integer",
-            "format" : "int32",
-            "nullable" : true
-          },
-          "entity" : {
+          "email" : {
             "type" : "string",
-            "nullable" : true
-          },
-          "action" : {
-            "$ref" : "#/components/schemas/ActionType"
-          },
-          "error" : {
-            "type" : "string",
-            "nullable" : true
-          },
-          "type" : {
-            "$ref" : "#/components/schemas/NotificationType"
+            "nullable" : false
           }
-        }
+        },
+        "additionalProperties" : false
+      },
+      "emailParameters" : {
+        "type" : "object",
+        "properties" : {
+          "logId" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "to" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/emailAddress"
+            }
+          },
+          "displayFrom" : {
+            "type" : "string"
+          },
+          "emailFrom" : {
+            "type" : "string"
+          },
+          "subject" : {
+            "type" : "string"
+          },
+          "htmlContent" : {
+            "type" : "string"
+          },
+          "additionalDescription" : {
+            "type" : "string"
+          },
+          "definitionId" : {
+            "type" : "integer",
+            "nullable" : false
+          },
+          "attachmentName" : {
+            "type" : "string"
+          },
+          "xstlTemplates" : {
+            "type" : "boolean",
+            "nullable" : false
+          },
+          "xmlData" : {
+            "type" : "string"
+          },
+          "processId" : {
+            "type" : "string",
+            "format" : "guid",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
       }
     }
-  },
-  "x-azure-api-id" : "white-fox-lana-api"
+  }
 }
