@@ -97,5 +97,6 @@
         "additionalProperties" : false
       }
     }
-  }
+  },
+  "x-azure-api-id" : "integracoes-api"
 }
