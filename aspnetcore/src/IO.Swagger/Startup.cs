@@ -1,7 +1,7 @@
 /*
- * Onyx Domain
+ * Onyx Integrations
  *
- * Onyx APIs for domain actionsl
+ * Onyx APIs for integrations
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -73,8 +73,8 @@ namespace IO.Swagger
                     c.SwaggerDoc("1.0.0", new OpenApiInfo
                     {
                         Version = "1.0.0",
-                        Title = "Onyx Domain",
-                        Description = "Onyx Domain (ASP.NET Core 3.0)",
+                        Title = "Onyx Integrations",
+                        Description = "Onyx Integrations (ASP.NET Core 3.0)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -85,8 +85,6 @@ namespace IO.Swagger
                     });
                     c.CustomSchemaIds(type => type.FullName);
                     c.IncludeXmlComments($"{AppContext.BaseDirectory}{Path.DirectorySeparatorChar}{_hostingEnv.ApplicationName}.xml");
-                    // Sets the basePath property in the Swagger document generated
-                    c.DocumentFilter<BasePathFilter>("/OnyxEM/domain/1.0.0");
 
                     // Include DataAnnotation attributes on Controller Action parameters as Swagger validation rules (e.g required, pattern, ..)
                     // Use [ValidateModelState] on Actions to actually validate it in C# as well!
@@ -113,10 +111,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Onyx Domain");
+                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Onyx Integrations");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "Onyx Domain Original");
+                // c.SwaggerEndpoint("/swagger-original.json", "Onyx Integrations Original");
             });
 
             //TODO: Use Https Redirection

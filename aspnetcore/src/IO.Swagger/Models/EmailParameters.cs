@@ -1,7 +1,7 @@
 /*
- * Onyx Domain
+ * Onyx Integrations
  *
- * APIs for domain actions for Onyx and FundControl
+ * Onyx APIs for integrations
  *
  * OpenAPI spec version: 1.0.0
  * 
