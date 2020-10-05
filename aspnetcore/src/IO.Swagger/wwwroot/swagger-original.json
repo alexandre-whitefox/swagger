@@ -15,7 +15,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/emailParameters"
+                "$ref" : "#/components/schemas/envelope"
               }
             }
           }
@@ -30,66 +30,17 @@
   },
   "components" : {
     "schemas" : {
-      "emailAddress" : {
-        "required" : [ "email", "name" ],
+      "envelope" : {
         "type" : "object",
         "properties" : {
-          "name" : {
+          "contents" : {
             "type" : "string",
-            "nullable" : false
+            "format" : "base64",
+            "nullable" : true
           },
-          "email" : {
+          "attachment" : {
             "type" : "string",
-            "nullable" : false
-          }
-        },
-        "additionalProperties" : false
-      },
-      "emailParameters" : {
-        "type" : "object",
-        "properties" : {
-          "logId" : {
-            "type" : "string",
-            "format" : "uuid"
-          },
-          "to" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "#/components/schemas/emailAddress"
-            }
-          },
-          "displayFrom" : {
-            "type" : "string"
-          },
-          "emailFrom" : {
-            "type" : "string"
-          },
-          "subject" : {
-            "type" : "string"
-          },
-          "htmlContent" : {
-            "type" : "string"
-          },
-          "additionalDescription" : {
-            "type" : "string"
-          },
-          "definitionId" : {
-            "type" : "integer",
-            "nullable" : false
-          },
-          "attachmentName" : {
-            "type" : "string"
-          },
-          "xstlTemplates" : {
-            "type" : "boolean",
-            "nullable" : false
-          },
-          "xmlData" : {
-            "type" : "string"
-          },
-          "processId" : {
-            "type" : "string",
-            "format" : "guid",
+            "format" : "base64",
             "nullable" : true
           }
         },

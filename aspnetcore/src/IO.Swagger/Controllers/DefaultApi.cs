@@ -36,7 +36,7 @@ namespace IO.Swagger.Controllers
         [Route("/email")]
         [ValidateModelState]
         [SwaggerOperation("EmailPost")]
-        public virtual IActionResult EmailPost([FromBody]EmailParameters body)
+        public virtual IActionResult EmailPost([FromBody]Envelope body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);
