@@ -10,6 +10,26 @@
   } ],
   "paths" : {
     "/email" : {
+      "description" : "sends an email",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "notifications activated"
+          }
+        }
+      }
+    },
+    "/email/build" : {
+      "description" : "creates email for sending",
       "post" : {
         "requestBody" : {
           "content" : {
