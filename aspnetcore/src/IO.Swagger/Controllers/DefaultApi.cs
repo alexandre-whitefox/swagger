@@ -77,5 +77,22 @@ namespace IO.Swagger.Controllers
 
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
+        /// <response code="200">report saved and sent</response>
+        [HttpPost]
+        [Route("/report")]
+        [ValidateModelState]
+        [SwaggerOperation("ReportPost")]
+        public virtual IActionResult ReportPost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
     }
 }

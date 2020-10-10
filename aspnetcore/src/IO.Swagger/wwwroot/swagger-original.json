@@ -65,6 +65,25 @@
           }
         }
       }
+    },
+    "/report" : {
+      "description" : "saves and sends a report",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "report saved and sent"
+          }
+        }
+      }
     }
   },
   "components" : {
