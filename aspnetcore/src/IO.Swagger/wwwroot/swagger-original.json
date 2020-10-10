@@ -46,6 +46,25 @@
           }
         }
       }
+    },
+    "/log" : {
+      "description" : "register a log event",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "log recorded"
+          }
+        }
+      }
     }
   },
   "components" : {
