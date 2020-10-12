@@ -31,6 +31,40 @@ namespace IO.Swagger.Controllers
         /// 
         /// </summary>
         /// <param name="body"></param>
+        /// <response code="200">data descripted and sent for processing</response>
+        [HttpPost]
+        [Route("/bloomberg/decrypt")]
+        [ValidateModelState]
+        [SwaggerOperation("BloombergDecryptPost")]
+        public virtual IActionResult BloombergDecryptPost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
+        /// <response code="200">data processed</response>
+        [HttpPost]
+        [Route("/bloomberg/process")]
+        [ValidateModelState]
+        [SwaggerOperation("BloombergProcessPost")]
+        public virtual IActionResult BloombergProcessPost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
         /// <response code="200">notifications activated</response>
         [HttpPost]
         [Route("/email/build")]
@@ -139,6 +173,22 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("TaskExecutePost")]
         public virtual IActionResult TaskExecutePost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <response code="200">task executed</response>
+        [HttpPost]
+        [Route("/timer/tick")]
+        [ValidateModelState]
+        [SwaggerOperation("TimerTickPost")]
+        public virtual IActionResult TimerTickPost()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);
