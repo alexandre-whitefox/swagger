@@ -122,6 +122,25 @@
           }
         }
       }
+    },
+    "/task/execute" : {
+      "description" : "execute a task",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "task executed"
+          }
+        }
+      }
     }
   },
   "components" : {
