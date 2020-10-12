@@ -47,6 +47,44 @@
         }
       }
     },
+    "/file/generate" : {
+      "description" : "generates a file using an excel or text generator",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file generated"
+          }
+        }
+      }
+    },
+    "/file/save" : {
+      "description" : "saves a file into a blob storage",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file saved"
+          }
+        }
+      }
+    },
     "/log" : {
       "description" : "register a log event",
       "post" : {
