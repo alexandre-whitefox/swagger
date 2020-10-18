@@ -85,6 +85,63 @@
         }
       }
     },
+    "/ftpclient/sendCapital" : {
+      "description" : "saves a capital file with FTP",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file sent"
+          }
+        }
+      }
+    },
+    "/ftpclient/sendAdm" : {
+      "description" : "saves an ADM file with FTP",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file sent"
+          }
+        }
+      }
+    },
+    "/ftpclient/sendCustody" : {
+      "description" : "saves a custody file with FTP",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "file sent"
+          }
+        }
+      }
+    },
     "/log" : {
       "description" : "register a log event",
       "post" : {
@@ -186,6 +243,25 @@
         "responses" : {
           "200" : {
             "description" : "data processed"
+          }
+        }
+      }
+    },
+    "/bloomberg/execute" : {
+      "description" : "execute bloomberg action",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "execute"
           }
         }
       }

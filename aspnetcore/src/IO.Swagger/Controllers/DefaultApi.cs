@@ -48,6 +48,23 @@ namespace IO.Swagger.Controllers
         /// 
         /// </summary>
         /// <param name="body"></param>
+        /// <response code="200">execute</response>
+        [HttpPost]
+        [Route("/bloomberg/execute")]
+        [ValidateModelState]
+        [SwaggerOperation("BloombergExecutePost")]
+        public virtual IActionResult BloombergExecutePost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
         /// <response code="200">data processed</response>
         [HttpPost]
         [Route("/bloomberg/process")]
@@ -122,6 +139,57 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("FileSavePost")]
         public virtual IActionResult FileSavePost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
+        /// <response code="200">file sent</response>
+        [HttpPost]
+        [Route("/ftpclient/sendAdm")]
+        [ValidateModelState]
+        [SwaggerOperation("FtpclientSendAdmPost")]
+        public virtual IActionResult FtpclientSendAdmPost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
+        /// <response code="200">file sent</response>
+        [HttpPost]
+        [Route("/ftpclient/sendCapital")]
+        [ValidateModelState]
+        [SwaggerOperation("FtpclientSendCapitalPost")]
+        public virtual IActionResult FtpclientSendCapitalPost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
+        /// <response code="200">file sent</response>
+        [HttpPost]
+        [Route("/ftpclient/sendCustody")]
+        [ValidateModelState]
+        [SwaggerOperation("FtpclientSendCustodyPost")]
+        public virtual IActionResult FtpclientSendCustodyPost([FromBody]Envelope body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);
