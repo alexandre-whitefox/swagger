@@ -86,7 +86,7 @@
       }
     },
     "/ftpclient/sendCapital" : {
-      "description" : "saves a capital file with FTP",
+      "description" : "sends a capital file with FTP",
       "post" : {
         "requestBody" : {
           "content" : {
@@ -105,7 +105,7 @@
       }
     },
     "/ftpclient/sendAdm" : {
-      "description" : "saves an ADM file with FTP",
+      "description" : "sends an ADM file with FTP",
       "post" : {
         "requestBody" : {
           "content" : {
@@ -124,7 +124,7 @@
       }
     },
     "/ftpclient/sendCustody" : {
-      "description" : "saves a custody file with FTP",
+      "description" : "sends a custody file with FTP",
       "post" : {
         "requestBody" : {
           "content" : {
