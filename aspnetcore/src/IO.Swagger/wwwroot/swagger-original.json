@@ -199,6 +199,25 @@
         }
       }
     },
+    "/job/execute" : {
+      "description" : "execute a job (long running task)",
+      "post" : {
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/envelope"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "job executed"
+          }
+        }
+      }
+    },
     "/timer/tick" : {
       "description" : "execute a timer tick",
       "post" : {

@@ -201,6 +201,23 @@ namespace IO.Swagger.Controllers
         /// 
         /// </summary>
         /// <param name="body"></param>
+        /// <response code="200">job executed</response>
+        [HttpPost]
+        [Route("/job/execute")]
+        [ValidateModelState]
+        [SwaggerOperation("JobExecutePost")]
+        public virtual IActionResult JobExecutePost([FromBody]Envelope body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200);
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="body"></param>
         /// <response code="200">log recorded</response>
         [HttpPost]
         [Route("/log")]
