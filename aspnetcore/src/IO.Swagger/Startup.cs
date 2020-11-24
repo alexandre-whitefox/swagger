@@ -1,7 +1,7 @@
 /*
- * Onyx Integrations
+ * Onyx Domain API V1
  *
- * Onyx APIs for integrations
+ * Onyx APIs for domain actionsl
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -73,8 +73,8 @@ namespace IO.Swagger
                     c.SwaggerDoc("1.0.0", new OpenApiInfo
                     {
                         Version = "1.0.0",
-                        Title = "Onyx Integrations",
-                        Description = "Onyx Integrations (ASP.NET Core 3.0)",
+                        Title = "Onyx Domain API V1",
+                        Description = "Onyx Domain API V1 (ASP.NET Core 3.1)",
                         Contact = new OpenApiContact()
                         {
                            Name = "Swagger Codegen Contributors",
@@ -111,10 +111,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Onyx Integrations");
+                c.SwaggerEndpoint("/swagger/1.0.0/swagger.json", "Onyx Domain API V1");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "Onyx Integrations Original");
+                // c.SwaggerEndpoint("/swagger-original.json", "Onyx Domain API V1 Original");
             });
 
             //TODO: Use Https Redirection

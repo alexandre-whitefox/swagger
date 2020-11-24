@@ -24,19 +24,25 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class Body : IEquatable<Body>
+    public partial class Body1 : IEquatable<Body1>
     { 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets UserName
         /// </summary>
-        [DataMember(Name="Type")]
-        public int? Type { get; set; }
+        [DataMember(Name="UserName")]
+        public string UserName { get; set; }
 
         /// <summary>
-        /// Gets or Sets File
+        /// Gets or Sets Password
         /// </summary>
-        [DataMember(Name="File")]
-        public byte[] File { get; set; }
+        [DataMember(Name="Password")]
+        public string Password { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RefreshToken
+        /// </summary>
+        [DataMember(Name="RefreshToken")]
+        public string RefreshToken { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -45,9 +51,10 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Body {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("class Body1 {\n");
+            sb.Append("  UserName: ").Append(UserName).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
+            sb.Append("  RefreshToken: ").Append(RefreshToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -70,29 +77,34 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Body)obj);
+            return obj.GetType() == GetType() && Equals((Body1)obj);
         }
 
         /// <summary>
-        /// Returns true if Body instances are equal
+        /// Returns true if Body1 instances are equal
         /// </summary>
-        /// <param name="other">Instance of Body to be compared</param>
+        /// <param name="other">Instance of Body1 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Body other)
+        public bool Equals(Body1 other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
+                    UserName == other.UserName ||
+                    UserName != null &&
+                    UserName.Equals(other.UserName)
                 ) && 
                 (
-                    File == other.File ||
-                    File != null &&
-                    File.Equals(other.File)
+                    Password == other.Password ||
+                    Password != null &&
+                    Password.Equals(other.Password)
+                ) && 
+                (
+                    RefreshToken == other.RefreshToken ||
+                    RefreshToken != null &&
+                    RefreshToken.Equals(other.RefreshToken)
                 );
         }
 
@@ -106,10 +118,12 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Type != null)
-                    hashCode = hashCode * 59 + Type.GetHashCode();
-                    if (File != null)
-                    hashCode = hashCode * 59 + File.GetHashCode();
+                    if (UserName != null)
+                    hashCode = hashCode * 59 + UserName.GetHashCode();
+                    if (Password != null)
+                    hashCode = hashCode * 59 + Password.GetHashCode();
+                    if (RefreshToken != null)
+                    hashCode = hashCode * 59 + RefreshToken.GetHashCode();
                 return hashCode;
             }
         }
@@ -117,12 +131,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(Body left, Body right)
+        public static bool operator ==(Body1 left, Body1 right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Body left, Body right)
+        public static bool operator !=(Body1 left, Body1 right)
         {
             return !Equals(left, right);
         }

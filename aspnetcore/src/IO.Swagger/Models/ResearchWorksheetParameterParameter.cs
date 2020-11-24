@@ -24,19 +24,13 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class Body : IEquatable<Body>
+    public partial class ResearchWorksheetParameterParameter : IEquatable<ResearchWorksheetParameterParameter>
     { 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name="Type")]
-        public int? Type { get; set; }
-
-        /// <summary>
-        /// Gets or Sets File
-        /// </summary>
-        [DataMember(Name="File")]
-        public byte[] File { get; set; }
+        [DataMember(Name="data")]
+        public ResearchWorksheetParameter Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -45,9 +39,8 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Body {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("class ResearchWorksheetParameterParameter {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -70,29 +63,24 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Body)obj);
+            return obj.GetType() == GetType() && Equals((ResearchWorksheetParameterParameter)obj);
         }
 
         /// <summary>
-        /// Returns true if Body instances are equal
+        /// Returns true if ResearchWorksheetParameterParameter instances are equal
         /// </summary>
-        /// <param name="other">Instance of Body to be compared</param>
+        /// <param name="other">Instance of ResearchWorksheetParameterParameter to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Body other)
+        public bool Equals(ResearchWorksheetParameterParameter other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
-                ) && 
-                (
-                    File == other.File ||
-                    File != null &&
-                    File.Equals(other.File)
+                    Data == other.Data ||
+                    Data != null &&
+                    Data.Equals(other.Data)
                 );
         }
 
@@ -106,10 +94,8 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Type != null)
-                    hashCode = hashCode * 59 + Type.GetHashCode();
-                    if (File != null)
-                    hashCode = hashCode * 59 + File.GetHashCode();
+                    if (Data != null)
+                    hashCode = hashCode * 59 + Data.GetHashCode();
                 return hashCode;
             }
         }
@@ -117,12 +103,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(Body left, Body right)
+        public static bool operator ==(ResearchWorksheetParameterParameter left, ResearchWorksheetParameterParameter right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Body left, Body right)
+        public static bool operator !=(ResearchWorksheetParameterParameter left, ResearchWorksheetParameterParameter right)
         {
             return !Equals(left, right);
         }

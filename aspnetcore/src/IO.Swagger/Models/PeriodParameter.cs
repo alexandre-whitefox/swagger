@@ -24,19 +24,19 @@ namespace IO.Swagger.Models
     /// 
     /// </summary>
     [DataContract]
-    public partial class Body : IEquatable<Body>
+    public partial class PeriodParameter : IEquatable<PeriodParameter>
     { 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets StartDate
         /// </summary>
-        [DataMember(Name="Type")]
-        public int? Type { get; set; }
+        [DataMember(Name="startDate")]
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets File
+        /// Gets or Sets EndDate
         /// </summary>
-        [DataMember(Name="File")]
-        public byte[] File { get; set; }
+        [DataMember(Name="endDate")]
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -45,9 +45,9 @@ namespace IO.Swagger.Models
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Body {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("class PeriodParameter {\n");
+            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -70,29 +70,29 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((Body)obj);
+            return obj.GetType() == GetType() && Equals((PeriodParameter)obj);
         }
 
         /// <summary>
-        /// Returns true if Body instances are equal
+        /// Returns true if PeriodParameter instances are equal
         /// </summary>
-        /// <param name="other">Instance of Body to be compared</param>
+        /// <param name="other">Instance of PeriodParameter to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Body other)
+        public bool Equals(PeriodParameter other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
 
             return 
                 (
-                    Type == other.Type ||
-                    Type != null &&
-                    Type.Equals(other.Type)
+                    StartDate == other.StartDate ||
+                    StartDate != null &&
+                    StartDate.Equals(other.StartDate)
                 ) && 
                 (
-                    File == other.File ||
-                    File != null &&
-                    File.Equals(other.File)
+                    EndDate == other.EndDate ||
+                    EndDate != null &&
+                    EndDate.Equals(other.EndDate)
                 );
         }
 
@@ -106,10 +106,10 @@ namespace IO.Swagger.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Type != null)
-                    hashCode = hashCode * 59 + Type.GetHashCode();
-                    if (File != null)
-                    hashCode = hashCode * 59 + File.GetHashCode();
+                    if (StartDate != null)
+                    hashCode = hashCode * 59 + StartDate.GetHashCode();
+                    if (EndDate != null)
+                    hashCode = hashCode * 59 + EndDate.GetHashCode();
                 return hashCode;
             }
         }
@@ -117,12 +117,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(Body left, Body right)
+        public static bool operator ==(PeriodParameter left, PeriodParameter right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Body left, Body right)
+        public static bool operator !=(PeriodParameter left, PeriodParameter right)
         {
             return !Equals(left, right);
         }

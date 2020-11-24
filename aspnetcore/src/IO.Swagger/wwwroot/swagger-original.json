@@ -1,286 +1,782 @@
 {
-  "openapi" : "3.0.0",
+  "openapi" : "3.0.1",
   "info" : {
-    "title" : "Onyx Integrations",
-    "description" : "Onyx APIs for integrations",
+    "title" : "Onyx Domain API V1",
+    "description" : "Onyx APIs for domain actionsl",
     "version" : "1.0.0"
   },
   "servers" : [ {
-    "url" : "http://onyxintegrationsapi.azurewebsites.net"
+    "url" : "http://onyxdomainapi.azurewebsites.net"
   } ],
   "paths" : {
-    "/email" : {
-      "description" : "sends an email",
+    "/Actions/SaveResearchWorksheet" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/ResearchWorksheetParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ResearchWorksheetParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ResearchWorksheetParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "notifications activated"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/email/build" : {
-      "description" : "creates email for sending",
+    "/Actions/UpdatePosition" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/PeriodParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PeriodParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PeriodParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "notifications activated"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/file/generate" : {
-      "description" : "generates a file using an excel or text generator",
+    "/Actions/RequestPerformanceReport" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/PeriodParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PeriodParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PeriodParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "file generated"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/file/save" : {
-      "description" : "saves a file into a blob storage",
+    "/Actions/DataToIntegrate" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/IntegrationRequest"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IntegrationRequest"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/IntegrationRequest"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "file saved"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/ftpclient/sendCapital" : {
-      "description" : "sends a capital file with FTP",
+    "/Actions/GetActivityOptions" : {
+      "get" : {
+        "tags" : [ "Actions" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Actions/GetFileUploadOptions" : {
+      "get" : {
+        "tags" : [ "Actions" ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Actions/ValidateTicker" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/TickerData"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerData"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerData"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "file sent"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/ftpclient/sendAdm" : {
-      "description" : "sends an ADM file with FTP",
+    "/Actions/RequestActivity" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/ActivityRequest"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityRequest"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ActivityRequest"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "file sent"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/ftpclient/sendCustody" : {
-      "description" : "sends a custody file with FTP",
+    "/Actions/UploadFile" : {
       "post" : {
+        "tags" : [ "Actions" ],
         "requestBody" : {
           "content" : {
-            "application/json" : {
+            "multipart/form-data" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/body"
+              },
+              "encoding" : {
+                "Type" : {
+                  "style" : "form"
+                },
+                "File" : {
+                  "style" : "form"
+                }
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "file sent"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Context"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/log" : {
-      "description" : "register a log event",
+    "/Queries/TotalQuantity" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "log recorded"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/report" : {
-      "description" : "saves and sends a report",
+    "/Queries/FaPricesValue" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "report saved and sent"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/task/execute" : {
-      "description" : "execute a task",
+    "/Queries/FaPricesDate" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "task executed"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/job/execute" : {
-      "description" : "execute a job (long running task)",
+    "/Queries/FaTarget" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StatementYearRefTickerDateParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "job executed"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/timer/tick" : {
-      "description" : "execute a timer tick",
+    "/Queries/SecurityPrice" : {
       "post" : {
-        "responses" : {
-          "200" : {
-            "description" : "task executed"
-          }
-        }
-      }
-    },
-    "/bloomberg/decrypt" : {
-      "description" : "decrypt data received from bloomberg",
-      "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "data descripted and sent for processing"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/bloomberg/process" : {
-      "description" : "process data received from bloomberg",
+    "/Queries/Nav" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/FundDateParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FundDateParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FundDateParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "data processed"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/bloomberg/execute" : {
-      "description" : "execute bloomberg action",
+    "/Queries/MktCap" : {
       "post" : {
+        "tags" : [ "Queries" ],
         "requestBody" : {
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/envelope"
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TickerDateUsdParameterParameter"
               }
             }
           }
         },
         "responses" : {
           "200" : {
-            "description" : "execute"
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Security/Login" : {
+      "post" : {
+        "tags" : [ "Security" ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BasicLoginParametersParameter"
+              }
+            },
+            "text/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BasicLoginParametersParameter"
+              }
+            },
+            "application/*+json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BasicLoginParametersParameter"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              },
+              "text/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Token" : {
+      "post" : {
+        "tags" : [ "Token" ],
+        "requestBody" : {
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/body_1"
+              },
+              "encoding" : {
+                "UserName" : {
+                  "style" : "form"
+                },
+                "Password" : {
+                  "style" : "form"
+                },
+                "RefreshToken" : {
+                  "style" : "form"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success"
           }
         }
       }
@@ -288,23 +784,329 @@
   },
   "components" : {
     "schemas" : {
-      "envelope" : {
+      "ResearchWorksheetParameter" : {
         "type" : "object",
         "properties" : {
-          "contents" : {
+          "ticker" : {
             "type" : "string",
-            "format" : "base64",
             "nullable" : true
           },
-          "attachment" : {
+          "template" : {
             "type" : "string",
-            "format" : "base64",
+            "nullable" : true
+          },
+          "currency" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "data" : {
+            "type" : "string",
             "nullable" : true
           }
         },
         "additionalProperties" : false
+      },
+      "ResearchWorksheetParameterParameter" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/ResearchWorksheetParameter"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Result" : {
+        "type" : "object",
+        "properties" : {
+          "success" : {
+            "type" : "boolean"
+          },
+          "message" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false,
+        "example" : {
+          "success" : true,
+          "message" : "message"
+        }
+      },
+      "PeriodParameter" : {
+        "type" : "object",
+        "properties" : {
+          "startDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "endDate" : {
+            "type" : "string",
+            "format" : "date-time"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "Context" : {
+        "type" : "object",
+        "additionalProperties" : false
+      },
+      "IntegrationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "userEmail" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "password" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "currentTradeId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "currentTransferTradeId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "currentCorporateActionId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "currentDividendId" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "TickerData" : {
+        "type" : "object",
+        "properties" : {
+          "ticker" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "ActivityRequest" : {
+        "type" : "object",
+        "properties" : {
+          "actionId" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "date" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "date2" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "ticker" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "months" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "TickerDateUsdParameter" : {
+        "type" : "object",
+        "properties" : {
+          "securityId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "ticker" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "usd" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "noUsdRateValue" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "TickerDateUsdParameterParameter" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/TickerDateUsdParameter"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "StatementYearRefTickerDateParameter" : {
+        "type" : "object",
+        "properties" : {
+          "securityId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "ticker" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          },
+          "usd" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "noUsdRateValue" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "statementId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "statement" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "yearRef" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "StatementYearRefTickerDateParameterParameter" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/StatementYearRefTickerDateParameter"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "FundDateParameter" : {
+        "type" : "object",
+        "properties" : {
+          "fundId" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          },
+          "fund" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : false
+      },
+      "FundDateParameterParameter" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/FundDateParameter"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "BasicLoginParameters" : {
+        "type" : "object",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "password" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "computerUserName" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "computerName" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "appVersion" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "singleUse" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "BasicLoginParametersParameter" : {
+        "type" : "object",
+        "properties" : {
+          "data" : {
+            "$ref" : "#/components/schemas/BasicLoginParameters"
+          }
+        },
+        "additionalProperties" : false
+      },
+      "body" : {
+        "type" : "object",
+        "properties" : {
+          "Type" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "File" : {
+            "type" : "string",
+            "format" : "binary",
+            "nullable" : true
+          }
+        }
+      },
+      "body_1" : {
+        "type" : "object",
+        "properties" : {
+          "UserName" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "Password" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "RefreshToken" : {
+            "type" : "string",
+            "nullable" : true
+          }
+        }
       }
     }
-  },
-  "x-azure-api-id" : "integrations-api"
+  }
 }
