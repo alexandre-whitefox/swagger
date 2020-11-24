@@ -1,6 +1,6 @@
 # IO.Swagger - ASP.NET Core 2.0 Server
 
-Onyx APIs for domain actionsl
+Onyx APIs for domain actions
 
 ## Run
 

@@ -1,7 +1,7 @@
 /*
  * Onyx Domain API V1
  *
- * Onyx APIs for domain actionsl
+ * Onyx APIs for domain actions
  *
  * OpenAPI spec version: 1.0.0
  * 

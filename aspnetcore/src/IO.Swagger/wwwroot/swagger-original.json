@@ -2,7 +2,7 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "Onyx Domain API V1",
-    "description" : "Onyx APIs for domain actionsl",
+    "description" : "Onyx APIs for domain actions",
     "version" : "1.0.0"
   },
   "servers" : [ {
