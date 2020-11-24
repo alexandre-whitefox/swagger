@@ -1,5 +1,5 @@
 {
-  "openapi" : "3.0.1",
+  "openapi" : "3.0.0",
   "info" : {
     "title" : "Onyx Domain API V1",
     "description" : "Onyx APIs for domain actions",
