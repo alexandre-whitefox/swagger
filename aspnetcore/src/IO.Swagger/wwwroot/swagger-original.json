@@ -5,7 +5,7 @@
     "version" : "1.0.1"
   },
   "servers" : [ {
-    "url" : "/"
+    "url" : "http://onyxdomainapi.azurewebsites.net"
   } ],
   "paths" : {
     "/Accounts/List" : {
